@@ -1,0 +1,576 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 50;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		FE8662CA2121E4F400B5EFF6 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = FE8662C92121E4F400B5EFF6 /* AppDelegate.m */; };
+		FE8662CD2121E4F400B5EFF6 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FE8662CC2121E4F400B5EFF6 /* ViewController.m */; };
+		FE8662D02121E4F400B5EFF6 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FE8662CE2121E4F400B5EFF6 /* Main.storyboard */; };
+		FE8662D22121E4F500B5EFF6 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FE8662D12121E4F500B5EFF6 /* Assets.xcassets */; };
+		FE8662D52121E4F500B5EFF6 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FE8662D32121E4F500B5EFF6 /* LaunchScreen.storyboard */; };
+		FE8662D82121E4F500B5EFF6 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = FE8662D72121E4F500B5EFF6 /* main.m */; };
+		FE8662E22121E4F500B5EFF6 /* MIRATests.m in Sources */ = {isa = PBXBuildFile; fileRef = FE8662E12121E4F500B5EFF6 /* MIRATests.m */; };
+		FE8662ED2121E4F500B5EFF6 /* MIRAUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = FE8662EC2121E4F500B5EFF6 /* MIRAUITests.m */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		FE8662DE2121E4F500B5EFF6 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = FE8662BD2121E4F400B5EFF6 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = FE8662C42121E4F400B5EFF6;
+			remoteInfo = MIRA;
+		};
+		FE8662E92121E4F500B5EFF6 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = FE8662BD2121E4F400B5EFF6 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = FE8662C42121E4F400B5EFF6;
+			remoteInfo = MIRA;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		FE8662C52121E4F400B5EFF6 /* MIRA.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MIRA.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		FE8662C82121E4F400B5EFF6 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
+		FE8662C92121E4F400B5EFF6 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
+		FE8662CB2121E4F400B5EFF6 /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
+		FE8662CC2121E4F400B5EFF6 /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
+		FE8662CF2121E4F400B5EFF6 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		FE8662D12121E4F500B5EFF6 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		FE8662D42121E4F500B5EFF6 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		FE8662D62121E4F500B5EFF6 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		FE8662D72121E4F500B5EFF6 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		FE8662DD2121E4F500B5EFF6 /* MIRATests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MIRATests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		FE8662E12121E4F500B5EFF6 /* MIRATests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MIRATests.m; sourceTree = "<group>"; };
+		FE8662E32121E4F500B5EFF6 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		FE8662E82121E4F500B5EFF6 /* MIRAUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MIRAUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		FE8662EC2121E4F500B5EFF6 /* MIRAUITests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MIRAUITests.m; sourceTree = "<group>"; };
+		FE8662EE2121E4F500B5EFF6 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		FE8662C22121E4F400B5EFF6 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		FE8662DA2121E4F500B5EFF6 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		FE8662E52121E4F500B5EFF6 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		FE8662BC2121E4F400B5EFF6 = {
+			isa = PBXGroup;
+			children = (
+				FE8662C72121E4F400B5EFF6 /* MIRA */,
+				FE8662E02121E4F500B5EFF6 /* MIRATests */,
+				FE8662EB2121E4F500B5EFF6 /* MIRAUITests */,
+				FE8662C62121E4F400B5EFF6 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		FE8662C62121E4F400B5EFF6 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				FE8662C52121E4F400B5EFF6 /* MIRA.app */,
+				FE8662DD2121E4F500B5EFF6 /* MIRATests.xctest */,
+				FE8662E82121E4F500B5EFF6 /* MIRAUITests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		FE8662C72121E4F400B5EFF6 /* MIRA */ = {
+			isa = PBXGroup;
+			children = (
+				FE8662C82121E4F400B5EFF6 /* AppDelegate.h */,
+				FE8662C92121E4F400B5EFF6 /* AppDelegate.m */,
+				FE8662CB2121E4F400B5EFF6 /* ViewController.h */,
+				FE8662CC2121E4F400B5EFF6 /* ViewController.m */,
+				FE8662CE2121E4F400B5EFF6 /* Main.storyboard */,
+				FE8662D12121E4F500B5EFF6 /* Assets.xcassets */,
+				FE8662D32121E4F500B5EFF6 /* LaunchScreen.storyboard */,
+				FE8662D62121E4F500B5EFF6 /* Info.plist */,
+				FE8662D72121E4F500B5EFF6 /* main.m */,
+			);
+			path = MIRA;
+			sourceTree = "<group>";
+		};
+		FE8662E02121E4F500B5EFF6 /* MIRATests */ = {
+			isa = PBXGroup;
+			children = (
+				FE8662E12121E4F500B5EFF6 /* MIRATests.m */,
+				FE8662E32121E4F500B5EFF6 /* Info.plist */,
+			);
+			path = MIRATests;
+			sourceTree = "<group>";
+		};
+		FE8662EB2121E4F500B5EFF6 /* MIRAUITests */ = {
+			isa = PBXGroup;
+			children = (
+				FE8662EC2121E4F500B5EFF6 /* MIRAUITests.m */,
+				FE8662EE2121E4F500B5EFF6 /* Info.plist */,
+			);
+			path = MIRAUITests;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		FE8662C42121E4F400B5EFF6 /* MIRA */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = FE8662F12121E4F500B5EFF6 /* Build configuration list for PBXNativeTarget "MIRA" */;
+			buildPhases = (
+				FE8662C12121E4F400B5EFF6 /* Sources */,
+				FE8662C22121E4F400B5EFF6 /* Frameworks */,
+				FE8662C32121E4F400B5EFF6 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = MIRA;
+			productName = MIRA;
+			productReference = FE8662C52121E4F400B5EFF6 /* MIRA.app */;
+			productType = "com.apple.product-type.application";
+		};
+		FE8662DC2121E4F500B5EFF6 /* MIRATests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = FE8662F42121E4F500B5EFF6 /* Build configuration list for PBXNativeTarget "MIRATests" */;
+			buildPhases = (
+				FE8662D92121E4F500B5EFF6 /* Sources */,
+				FE8662DA2121E4F500B5EFF6 /* Frameworks */,
+				FE8662DB2121E4F500B5EFF6 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				FE8662DF2121E4F500B5EFF6 /* PBXTargetDependency */,
+			);
+			name = MIRATests;
+			productName = MIRATests;
+			productReference = FE8662DD2121E4F500B5EFF6 /* MIRATests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		FE8662E72121E4F500B5EFF6 /* MIRAUITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = FE8662F72121E4F500B5EFF6 /* Build configuration list for PBXNativeTarget "MIRAUITests" */;
+			buildPhases = (
+				FE8662E42121E4F500B5EFF6 /* Sources */,
+				FE8662E52121E4F500B5EFF6 /* Frameworks */,
+				FE8662E62121E4F500B5EFF6 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				FE8662EA2121E4F500B5EFF6 /* PBXTargetDependency */,
+			);
+			name = MIRAUITests;
+			productName = MIRAUITests;
+			productReference = FE8662E82121E4F500B5EFF6 /* MIRAUITests.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		FE8662BD2121E4F400B5EFF6 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0930;
+				ORGANIZATIONNAME = ITE;
+				TargetAttributes = {
+					FE8662C42121E4F400B5EFF6 = {
+						CreatedOnToolsVersion = 9.3;
+					};
+					FE8662DC2121E4F500B5EFF6 = {
+						CreatedOnToolsVersion = 9.3;
+						TestTargetID = FE8662C42121E4F400B5EFF6;
+					};
+					FE8662E72121E4F500B5EFF6 = {
+						CreatedOnToolsVersion = 9.3;
+						TestTargetID = FE8662C42121E4F400B5EFF6;
+					};
+				};
+			};
+			buildConfigurationList = FE8662C02121E4F400B5EFF6 /* Build configuration list for PBXProject "MIRA" */;
+			compatibilityVersion = "Xcode 9.3";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = FE8662BC2121E4F400B5EFF6;
+			productRefGroup = FE8662C62121E4F400B5EFF6 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				FE8662C42121E4F400B5EFF6 /* MIRA */,
+				FE8662DC2121E4F500B5EFF6 /* MIRATests */,
+				FE8662E72121E4F500B5EFF6 /* MIRAUITests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		FE8662C32121E4F400B5EFF6 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				FE8662D52121E4F500B5EFF6 /* LaunchScreen.storyboard in Resources */,
+				FE8662D22121E4F500B5EFF6 /* Assets.xcassets in Resources */,
+				FE8662D02121E4F400B5EFF6 /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		FE8662DB2121E4F500B5EFF6 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		FE8662E62121E4F500B5EFF6 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		FE8662C12121E4F400B5EFF6 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				FE8662CD2121E4F400B5EFF6 /* ViewController.m in Sources */,
+				FE8662D82121E4F500B5EFF6 /* main.m in Sources */,
+				FE8662CA2121E4F400B5EFF6 /* AppDelegate.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		FE8662D92121E4F500B5EFF6 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				FE8662E22121E4F500B5EFF6 /* MIRATests.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		FE8662E42121E4F500B5EFF6 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				FE8662ED2121E4F500B5EFF6 /* MIRAUITests.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		FE8662DF2121E4F500B5EFF6 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = FE8662C42121E4F400B5EFF6 /* MIRA */;
+			targetProxy = FE8662DE2121E4F500B5EFF6 /* PBXContainerItemProxy */;
+		};
+		FE8662EA2121E4F500B5EFF6 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = FE8662C42121E4F400B5EFF6 /* MIRA */;
+			targetProxy = FE8662E92121E4F500B5EFF6 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		FE8662CE2121E4F400B5EFF6 /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				FE8662CF2121E4F400B5EFF6 /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		FE8662D32121E4F500B5EFF6 /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				FE8662D42121E4F500B5EFF6 /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		FE8662EF2121E4F500B5EFF6 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.3;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+			};
+			name = Debug;
+		};
+		FE8662F02121E4F500B5EFF6 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.3;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = iphoneos;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		FE8662F22121E4F500B5EFF6 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_STYLE = Automatic;
+				INFOPLIST_FILE = MIRA/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = sg.edu.ite.MIRA;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		FE8662F32121E4F500B5EFF6 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_STYLE = Automatic;
+				INFOPLIST_FILE = MIRA/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = sg.edu.ite.MIRA;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+		FE8662F52121E4F500B5EFF6 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				INFOPLIST_FILE = MIRATests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = sg.edu.ite.MIRATests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/MIRA.app/MIRA";
+			};
+			name = Debug;
+		};
+		FE8662F62121E4F500B5EFF6 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				INFOPLIST_FILE = MIRATests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = sg.edu.ite.MIRATests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/MIRA.app/MIRA";
+			};
+			name = Release;
+		};
+		FE8662F82121E4F500B5EFF6 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				INFOPLIST_FILE = MIRAUITests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = sg.edu.ite.MIRAUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = MIRA;
+			};
+			name = Debug;
+		};
+		FE8662F92121E4F500B5EFF6 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				INFOPLIST_FILE = MIRAUITests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = sg.edu.ite.MIRAUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = MIRA;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		FE8662C02121E4F400B5EFF6 /* Build configuration list for PBXProject "MIRA" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				FE8662EF2121E4F500B5EFF6 /* Debug */,
+				FE8662F02121E4F500B5EFF6 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		FE8662F12121E4F500B5EFF6 /* Build configuration list for PBXNativeTarget "MIRA" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				FE8662F22121E4F500B5EFF6 /* Debug */,
+				FE8662F32121E4F500B5EFF6 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		FE8662F42121E4F500B5EFF6 /* Build configuration list for PBXNativeTarget "MIRATests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				FE8662F52121E4F500B5EFF6 /* Debug */,
+				FE8662F62121E4F500B5EFF6 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		FE8662F72121E4F500B5EFF6 /* Build configuration list for PBXNativeTarget "MIRAUITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				FE8662F82121E4F500B5EFF6 /* Debug */,
+				FE8662F92121E4F500B5EFF6 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = FE8662BD2121E4F400B5EFF6 /* Project object */;
+}
