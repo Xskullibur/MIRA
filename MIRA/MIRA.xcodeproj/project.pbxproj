@@ -7,6 +7,17 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		FE71950D2121EBF9002C10A9 /* nanopb.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FE7195052121EBF7002C10A9 /* nanopb.framework */; };
+		FE71950E2121EBF9002C10A9 /* FirebaseInstanceID.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FE7195062121EBF7002C10A9 /* FirebaseInstanceID.framework */; };
+		FE71950F2121EBF9002C10A9 /* FirebaseAnalytics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FE7195072121EBF7002C10A9 /* FirebaseAnalytics.framework */; };
+		FE7195102121EBF9002C10A9 /* GoogleUtilities.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FE7195082121EBF7002C10A9 /* GoogleUtilities.framework */; };
+		FE7195112121EBF9002C10A9 /* GoogleAppMeasurement.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FE7195092121EBF8002C10A9 /* GoogleAppMeasurement.framework */; };
+		FE7195122121EBF9002C10A9 /* FirebaseCoreDiagnostics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FE71950A2121EBF8002C10A9 /* FirebaseCoreDiagnostics.framework */; };
+		FE7195132121EBF9002C10A9 /* MeasurementNanoPB.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FE71950B2121EBF8002C10A9 /* MeasurementNanoPB.framework */; };
+		FE7195142121EBF9002C10A9 /* FirebaseCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FE71950C2121EBF9002C10A9 /* FirebaseCore.framework */; };
+		FE7195172121EC44002C10A9 /* FirebaseStorage.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FE7195152121EC44002C10A9 /* FirebaseStorage.framework */; };
+		FE7195182121EC44002C10A9 /* GTMSessionFetcher.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FE7195162121EC44002C10A9 /* GTMSessionFetcher.framework */; };
+		FE71951B2121EE4F002C10A9 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = FE71951A2121EE4F002C10A9 /* GoogleService-Info.plist */; };
 		FE8662CA2121E4F400B5EFF6 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = FE8662C92121E4F400B5EFF6 /* AppDelegate.m */; };
 		FE8662CD2121E4F400B5EFF6 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FE8662CC2121E4F400B5EFF6 /* ViewController.m */; };
 		FE8662D02121E4F400B5EFF6 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FE8662CE2121E4F400B5EFF6 /* Main.storyboard */; };
@@ -35,6 +46,18 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		FE7195052121EBF7002C10A9 /* nanopb.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = nanopb.framework; sourceTree = "<group>"; };
+		FE7195062121EBF7002C10A9 /* FirebaseInstanceID.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = FirebaseInstanceID.framework; sourceTree = "<group>"; };
+		FE7195072121EBF7002C10A9 /* FirebaseAnalytics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = FirebaseAnalytics.framework; sourceTree = "<group>"; };
+		FE7195082121EBF7002C10A9 /* GoogleUtilities.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = GoogleUtilities.framework; sourceTree = "<group>"; };
+		FE7195092121EBF8002C10A9 /* GoogleAppMeasurement.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = GoogleAppMeasurement.framework; sourceTree = "<group>"; };
+		FE71950A2121EBF8002C10A9 /* FirebaseCoreDiagnostics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = FirebaseCoreDiagnostics.framework; sourceTree = "<group>"; };
+		FE71950B2121EBF8002C10A9 /* MeasurementNanoPB.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = MeasurementNanoPB.framework; sourceTree = "<group>"; };
+		FE71950C2121EBF9002C10A9 /* FirebaseCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = FirebaseCore.framework; sourceTree = "<group>"; };
+		FE7195152121EC44002C10A9 /* FirebaseStorage.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = FirebaseStorage.framework; sourceTree = "<group>"; };
+		FE7195162121EC44002C10A9 /* GTMSessionFetcher.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = GTMSessionFetcher.framework; sourceTree = "<group>"; };
+		FE7195192121ED02002C10A9 /* Firebase.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Firebase.h; sourceTree = "<group>"; };
+		FE71951A2121EE4F002C10A9 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		FE8662C52121E4F400B5EFF6 /* MIRA.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MIRA.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		FE8662C82121E4F400B5EFF6 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		FE8662C92121E4F400B5EFF6 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
@@ -58,6 +81,16 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				FE71950D2121EBF9002C10A9 /* nanopb.framework in Frameworks */,
+				FE71950E2121EBF9002C10A9 /* FirebaseInstanceID.framework in Frameworks */,
+				FE7195112121EBF9002C10A9 /* GoogleAppMeasurement.framework in Frameworks */,
+				FE7195122121EBF9002C10A9 /* FirebaseCoreDiagnostics.framework in Frameworks */,
+				FE7195182121EC44002C10A9 /* GTMSessionFetcher.framework in Frameworks */,
+				FE7195142121EBF9002C10A9 /* FirebaseCore.framework in Frameworks */,
+				FE7195172121EC44002C10A9 /* FirebaseStorage.framework in Frameworks */,
+				FE7195132121EBF9002C10A9 /* MeasurementNanoPB.framework in Frameworks */,
+				FE7195102121EBF9002C10A9 /* GoogleUtilities.framework in Frameworks */,
+				FE71950F2121EBF9002C10A9 /* FirebaseAnalytics.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -78,6 +111,23 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		FE7195042121EBCB002C10A9 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				FE7195152121EC44002C10A9 /* FirebaseStorage.framework */,
+				FE7195162121EC44002C10A9 /* GTMSessionFetcher.framework */,
+				FE7195072121EBF7002C10A9 /* FirebaseAnalytics.framework */,
+				FE71950C2121EBF9002C10A9 /* FirebaseCore.framework */,
+				FE71950A2121EBF8002C10A9 /* FirebaseCoreDiagnostics.framework */,
+				FE7195062121EBF7002C10A9 /* FirebaseInstanceID.framework */,
+				FE7195092121EBF8002C10A9 /* GoogleAppMeasurement.framework */,
+				FE7195082121EBF7002C10A9 /* GoogleUtilities.framework */,
+				FE71950B2121EBF8002C10A9 /* MeasurementNanoPB.framework */,
+				FE7195052121EBF7002C10A9 /* nanopb.framework */,
+			);
+			path = Frameworks;
+			sourceTree = "<group>";
+		};
 		FE8662BC2121E4F400B5EFF6 = {
 			isa = PBXGroup;
 			children = (
@@ -101,6 +151,8 @@
 		FE8662C72121E4F400B5EFF6 /* MIRA */ = {
 			isa = PBXGroup;
 			children = (
+				FE7195042121EBCB002C10A9 /* Frameworks */,
+				FE7195192121ED02002C10A9 /* Firebase.h */,
 				FE8662C82121E4F400B5EFF6 /* AppDelegate.h */,
 				FE8662C92121E4F400B5EFF6 /* AppDelegate.m */,
 				FE8662CB2121E4F400B5EFF6 /* ViewController.h */,
@@ -109,6 +161,7 @@
 				FE8662D12121E4F500B5EFF6 /* Assets.xcassets */,
 				FE8662D32121E4F500B5EFF6 /* LaunchScreen.storyboard */,
 				FE8662D62121E4F500B5EFF6 /* Info.plist */,
+				FE71951A2121EE4F002C10A9 /* GoogleService-Info.plist */,
 				FE8662D72121E4F500B5EFF6 /* main.m */,
 			);
 			path = MIRA;
@@ -236,6 +289,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				FE8662D52121E4F500B5EFF6 /* LaunchScreen.storyboard in Resources */,
+				FE71951B2121EE4F002C10A9 /* GoogleService-Info.plist in Resources */,
 				FE8662D22121E4F500B5EFF6 /* Assets.xcassets in Resources */,
 				FE8662D02121E4F400B5EFF6 /* Main.storyboard in Resources */,
 			);
@@ -434,11 +488,16 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/MIRA/Frameworks",
+				);
 				INFOPLIST_FILE = MIRA/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
+				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_BUNDLE_IDENTIFIER = sg.edu.ite.MIRA;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -450,11 +509,16 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/MIRA/Frameworks",
+				);
 				INFOPLIST_FILE = MIRA/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
+				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_BUNDLE_IDENTIFIER = sg.edu.ite.MIRA;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TARGETED_DEVICE_FAMILY = "1,2";
