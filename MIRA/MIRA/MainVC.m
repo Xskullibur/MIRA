@@ -7,7 +7,7 @@
 //
 
 #import "MainVC.h"
-#import "CategoryVC.h"
+#import "DetailsTVC.h"
 
 @interface MainVC ()
 
@@ -30,7 +30,7 @@
 // In a storyboard-based application, you will often want to do a little preparation before navigation
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
     
-    CategoryVC *vc = [segue destinationViewController];
+    DetailsTVC *vc = [segue destinationViewController];
     
     if ([_tableview indexPathForSelectedRow] == 0) {
         vc.ReportType = @"Photo";
@@ -63,7 +63,7 @@
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
-    [self performSegueWithIdentifier:@"showCategory" sender:nil];
+    [self performSegueWithIdentifier:@"showDetails" sender:nil];
 }
 
 @end

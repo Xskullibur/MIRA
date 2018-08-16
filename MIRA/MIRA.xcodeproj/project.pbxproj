@@ -18,6 +18,7 @@
 		FE7195172121EC44002C10A9 /* FirebaseStorage.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FE7195152121EC44002C10A9 /* FirebaseStorage.framework */; };
 		FE7195182121EC44002C10A9 /* GTMSessionFetcher.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FE7195162121EC44002C10A9 /* GTMSessionFetcher.framework */; };
 		FE71951B2121EE4F002C10A9 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = FE71951A2121EE4F002C10A9 /* GoogleService-Info.plist */; };
+		FE81F7F1212560B700D6C450 /* DetailsTVC.m in Sources */ = {isa = PBXBuildFile; fileRef = FE81F7F0212560B700D6C450 /* DetailsTVC.m */; };
 		FE8662CA2121E4F400B5EFF6 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = FE8662C92121E4F400B5EFF6 /* AppDelegate.m */; };
 		FE8662D02121E4F400B5EFF6 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FE8662CE2121E4F400B5EFF6 /* Main.storyboard */; };
 		FE8662D22121E4F500B5EFF6 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FE8662D12121E4F500B5EFF6 /* Assets.xcassets */; };
@@ -26,7 +27,6 @@
 		FE8662E22121E4F500B5EFF6 /* MIRATests.m in Sources */ = {isa = PBXBuildFile; fileRef = FE8662E12121E4F500B5EFF6 /* MIRATests.m */; };
 		FE8662ED2121E4F500B5EFF6 /* MIRAUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = FE8662EC2121E4F500B5EFF6 /* MIRAUITests.m */; };
 		FEF607612125526E000852AD /* MainVC.m in Sources */ = {isa = PBXBuildFile; fileRef = FEF607602125526E000852AD /* MainVC.m */; };
-		FEF6076421255892000852AD /* CategoryVC.m in Sources */ = {isa = PBXBuildFile; fileRef = FEF6076321255892000852AD /* CategoryVC.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -59,6 +59,8 @@
 		FE7195162121EC44002C10A9 /* GTMSessionFetcher.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = GTMSessionFetcher.framework; sourceTree = "<group>"; };
 		FE7195192121ED02002C10A9 /* Firebase.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Firebase.h; sourceTree = "<group>"; };
 		FE71951A2121EE4F002C10A9 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		FE81F7EF212560B700D6C450 /* DetailsTVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DetailsTVC.h; sourceTree = "<group>"; };
+		FE81F7F0212560B700D6C450 /* DetailsTVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DetailsTVC.m; sourceTree = "<group>"; };
 		FE8662C52121E4F400B5EFF6 /* MIRA.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MIRA.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		FE8662C82121E4F400B5EFF6 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		FE8662C92121E4F400B5EFF6 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
@@ -75,8 +77,6 @@
 		FE8662EE2121E4F500B5EFF6 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		FEF6075F2125526E000852AD /* MainVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MainVC.h; sourceTree = "<group>"; };
 		FEF607602125526E000852AD /* MainVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MainVC.m; sourceTree = "<group>"; };
-		FEF6076221255892000852AD /* CategoryVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CategoryVC.h; sourceTree = "<group>"; };
-		FEF6076321255892000852AD /* CategoryVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CategoryVC.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -166,8 +166,8 @@
 				FE8662D72121E4F500B5EFF6 /* main.m */,
 				FEF6075F2125526E000852AD /* MainVC.h */,
 				FEF607602125526E000852AD /* MainVC.m */,
-				FEF6076221255892000852AD /* CategoryVC.h */,
-				FEF6076321255892000852AD /* CategoryVC.m */,
+				FE81F7EF212560B700D6C450 /* DetailsTVC.h */,
+				FE81F7F0212560B700D6C450 /* DetailsTVC.m */,
 			);
 			path = MIRA;
 			sourceTree = "<group>";
@@ -322,8 +322,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				FEF607612125526E000852AD /* MainVC.m in Sources */,
+				FE81F7F1212560B700D6C450 /* DetailsTVC.m in Sources */,
 				FE8662D82121E4F500B5EFF6 /* main.m in Sources */,
-				FEF6076421255892000852AD /* CategoryVC.m in Sources */,
 				FE8662CA2121E4F400B5EFF6 /* AppDelegate.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
