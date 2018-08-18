@@ -7,6 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
+#import <FirebaseStorage/FirebaseStorage.h>
 
 @interface DetailsTVC : UITableViewController <UIPickerViewDelegate, UIPickerViewDataSource, UINavigationControllerDelegate, UIImagePickerControllerDelegate>
 
@@ -21,6 +22,7 @@
 
 @property NSMutableArray* Categorys;
 @property NSString* ReportType;
-@property UIImage* Image;
+@property NSString* name;
+@property NSURL* Image;
 
 @end

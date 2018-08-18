@@ -10,5 +10,5 @@
 
 @interface MainVC : UIViewController <UITableViewDelegate, UITableViewDataSource>
 @property (weak, nonatomic) IBOutlet UITableView *tableview;
-
+@property NSString* reportType;
 @end

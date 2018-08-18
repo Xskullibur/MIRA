@@ -32,14 +32,18 @@
     
     DetailsTVC *vc = [segue destinationViewController];
     
-    if ([_tableview indexPathForSelectedRow] == 0) {
-        vc.ReportType = @"Photo";
-    }
-    else{
-        vc.ReportType = @"Video";
-    }
+    vc.ReportType = _reportType;
+    
+//    if ([_tableview indexPathForSelectedRow] == [NSIndexPath indexPathWithIndex:1]) {
+//        vc.ReportType = @"Photo";
+//    }
+//    else{
+//        vc.ReportType = @"Video";
+//    }
     
 }
+
+#pragma mark - Table View
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
     return 2;
@@ -63,6 +67,13 @@
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
+    if (indexPath.row == 0) {
+        _reportType = @"Photo";
+    }
+    else{
+        _reportType = @"Video";
+    }
+    
     [self performSegueWithIdentifier:@"showDetails" sender:nil];
 }
 
