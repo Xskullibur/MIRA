@@ -140,13 +140,21 @@
 - (IBAction)browseBtnClicked:(id)sender {
     
     if ([_ReportType isEqualToString:@"Photo"]) {
+        
         UIImagePickerController *ImagePicker = [[UIImagePickerController alloc] init];
+        ImagePicker.sourceType = UIImagePickerControllerSourceTypePhotoLibrary;
         ImagePicker.delegate  = self;
         ImagePicker.allowsEditing = YES;
         [self presentViewController:ImagePicker animated:YES completion:NULL];
+        
     }
     else{
         
+        UIImagePickerController *VideoPicker = [[UIImagePickerController alloc] init];
+        VideoPicker.sourceType = UIImagePickerControllerSourceTypePhotoLibrary;
+        VideoPicker.mediaTypes = @[(NSString*)kUTTypeMovie, (NSString*)kUTTypeAVIMovie, (NSString*)kUTTypeVideo, (NSString*)kUTTypeMPEG4];
+        VideoPicker.delegate = self;
+        [self presentViewController:VideoPicker animated:YES completion:nil];
     }
     
 }
@@ -155,18 +163,22 @@
 
 - (void)imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary<NSString *,id> *)info{
     
+    picker.delegate = self;
+    
     if ([_ReportType isEqualToString:@"Photo"]) {
         
-        picker.delegate = self;
-        
-        //Save Image Info into _Image
-        _Image = [info valueForKey:UIImagePickerControllerImageURL];
+        //Save Image Info into _Source
+        _Source = [info valueForKey:UIImagePickerControllerImageURL];
         [self dismissViewControllerAnimated:YES completion:nil];
-        _sourceNameTxt.text = [_Image absoluteString];
-        //_Image = info[UIImagePickerControllerEditedImage];
+        _sourceNameTxt.text = [_Source absoluteString];
         
     }
     else{
+        
+        //Save Video Info to _Source
+        _Source = [info valueForKey:UIImagePickerControllerMediaURL];
+        [self dismissViewControllerAnimated:YES completion:nil];
+        _sourceNameTxt.text = [_Source relativeString];
         
     }
     
@@ -228,11 +240,24 @@
         _name = @" - (Anonymous)";
     }
 
-    //Check Report Type
+    //-----     Set FIREBASE REFERENCE      -----//
+    
+    NSDateFormatter *dateFormat = [[NSDateFormatter alloc] init];
+    [dateFormat setDateStyle:NSDateFormatterMediumStyle];
+    [dateFormat setTimeStyle:NSDateFormatterShortStyle];
+    
+    //Storage Reference
+    FIRStorageReference *storageRef = [[FIRStorage storage] reference];
+    FIRStorageReference *folderRef = [storageRef child: [NSString stringWithFormat:@"%@/%@%@",categoryFolder , [dateFormat stringFromDate:[NSDate date]], _name]];
+    FIRStorageMetadata *metadata = [[FIRStorageMetadata alloc]init];
+    
+    //-----     Check Start Uploading       -----//
+    
+    //Check Report Type (Photo)
     if ([_ReportType isEqualToString:@"Photo"]) {
         
         //Image Not Set
-        if (_Image == nil) {
+        if (_Source == nil) {
             
             //Alert For  Missing Image
             UIAlertController* alert = [UIAlertController alertControllerWithTitle:@"Source Missing" message:@"Please Browse For An Image To Submit" preferredStyle:UIAlertControllerStyleAlert];
@@ -245,20 +270,11 @@
         }
         else{
             
-            NSDateFormatter *dateFormat = [[NSDateFormatter alloc] init];
-            [dateFormat setDateStyle:NSDateFormatterMediumStyle];
-            [dateFormat setTimeStyle:NSDateFormatterShortStyle];
-            
-            //Storage Reference
-            FIRStorageReference *storageRef = [[FIRStorage storage] reference];
-            FIRStorageReference *folderRef = [storageRef child: [NSString stringWithFormat:@"%@/%@%@",categoryFolder , [dateFormat stringFromDate:[NSDate date]], _name]];
-            
             //Declare File Name
-            FIRStorageMetadata *metadata = [[FIRStorageMetadata alloc]init];
             metadata.contentType = @"image/jpeg";
             
             //Upload File
-            FIRStorageUploadTask *upload = [folderRef putFile:_Image metadata:metadata];
+            FIRStorageUploadTask *upload = [folderRef putFile:_Source metadata:metadata];
 
             // Upload reported progress
             [upload observeStatus:FIRStorageTaskStatusProgress handler:^(FIRStorageTaskSnapshot *snapshot) {
@@ -315,8 +331,85 @@
         
     }
     
+    //Video
+    else{
+        
+        //Image Not Set
+        if (_Source == nil) {
+            
+            //Alert For  Missing Video
+            UIAlertController* alert = [UIAlertController alertControllerWithTitle:@"Source Missing" message:@"Please Browse For An Video To Submit" preferredStyle:UIAlertControllerStyleAlert];
+            
+            UIAlertAction* okButton = [UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleCancel handler:nil];
+            
+            [alert addAction: okButton];
+            [self presentViewController:alert animated:YES completion:nil];
+            
+        }
+        else{
+            
+            //Declare File Name
+            FIRStorageMetadata *metadata = [[FIRStorageMetadata alloc]init];
+            //metadata.contentType = @"image/jpeg";
+            
+            //Upload File
+            FIRStorageUploadTask *upload = [folderRef putFile:_Source metadata:metadata];
+            
+            // Upload reported progress
+            [upload observeStatus:FIRStorageTaskStatusProgress handler:^(FIRStorageTaskSnapshot *snapshot) {
+                double percentComplete = 100.0 * (snapshot.progress.completedUnitCount) / (snapshot.progress.totalUnitCount);
+                
+                NSLog(@"Upload Percent: %lf", percentComplete);
+                
+            }];
+            
+            // Upload completed successfully
+            [upload observeStatus:FIRStorageTaskStatusSuccess handler:^(FIRStorageTaskSnapshot *snapshot) {
+                
+                UIAlertController* alert = [UIAlertController alertControllerWithTitle:@"Upload Successful" message:@"Thank You, Your Report Will Be Reviewed and Actions Will Be Taken If Necessary" preferredStyle:UIAlertControllerStyleAlert];
+                
+                UIAlertAction* okButton = [UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleCancel handler:^(UIAlertAction *PresentSegue){
+                    
+                    UIStoryboard *sb = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
+                    UIViewController *vc = [sb instantiateViewControllerWithIdentifier:@"MIRA"];
+                    [self presentViewController:vc animated:YES completion:nil];
+                    
+                }];
+                
+                [alert addAction: okButton];
+                [self presentViewController:alert animated:YES completion:nil];
+                
+            }];
+            
+            // Errors only occur in the "Failure" case
+            [upload observeStatus:FIRStorageTaskStatusFailure handler:^(FIRStorageTaskSnapshot *snapshot) {
+                if (snapshot.error != nil) {
+                    switch (snapshot.error.code) {
+                        case FIRStorageErrorCodeObjectNotFound:
+                            
+                            NSLog(@"Error: Object Not Found!");
+                            
+                            break;
+                            
+                        case FIRStorageErrorCodeUnauthorized:
+                            NSLog(@"Error: No Authorization To Access File");
+                            break;
+                            
+                        case FIRStorageErrorCodeCancelled:
+                            NSLog(@"Error: Canceled");
+                            break;
+                            
+                        case FIRStorageErrorCodeUnknown:
+                            NSLog(@"Error: Unknown Error, Please Inspect Server Response");
+                            break;
+                    }
+                }
+            }];
+            
+        }
+        
+    }
+        
 }
-
-
 
 @end
