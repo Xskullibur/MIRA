@@ -36,6 +36,27 @@
     // Dispose of any resources that can be recreated.
 }
 
+-(void)showProgressBar{
+    
+    float width = 232;
+    float height = 5;
+    
+    _progBar = [[UIProgressView alloc]initWithProgressViewStyle:UIProgressViewStyleDefault];
+    _progBar.backgroundColor = [UIColor colorWithWhite:0.75f alpha:1.0f];
+    [_progBar setFrame:CGRectMake(0, 0, width, height)];
+    [_progBar setTrackTintColor:[UIColor colorWithWhite:0.75f alpha:1.0f]];
+    [_progBar setProgressTintColor:[UIColor colorWithRed:21.0f/255.0f green:126.0f/255.0f blue:251.0f/255.0f alpha:1.0f]];
+    _progBar.alpha = 0.0;
+    [[UIApplication sharedApplication].keyWindow addSubview:_progBar];
+    _progBar.center = _progBar.superview.center;
+    [_progBar setFrame:CGRectMake(_progBar.frame.origin.x, _progBar.frame.origin.y+25, _progBar.frame.size.width, _progBar.frame.size.height)];
+    [UIView beginAnimations:nil context:NULL];
+    [UIView setAnimationDuration:2.0];
+    [_progBar setAlpha:1.0];
+    [UIView commitAnimations];
+    
+}
+
 #pragma mark - Picker view data source
 
 - (NSInteger)numberOfComponentsInPickerView:(UIPickerView *)pickerView{
@@ -192,6 +213,8 @@
     
     NSString* categoryFolder;
     
+    //-----     Check For Report Category       -----//
+    
     switch ([_categoryPicker selectedRowInComponent:0]) {
         //Safety Issue
         case 0:
@@ -217,10 +240,11 @@
             break;
     }
     
-    //Check if Anonymous
+    
+    //-----     Check if Anonymous Chosen       -----//
     if (!_anonymousSwitch.isOn) {
         
-        //Information Not Filled
+        //Check if information filled
         if (!_nricTxt.hasText || !_nameTxt.hasText) {
             
             UIAlertController* alert = [UIAlertController alertControllerWithTitle:@"Missing Fields" message:@"Please Fill in your NRIC and Name if you do not wish to be Anonymous" preferredStyle:UIAlertControllerStyleAlert];
@@ -253,161 +277,97 @@
     
     //-----     Check Start Uploading       -----//
     
-    //Check Report Type (Photo)
-    if ([_ReportType isEqualToString:@"Photo"]) {
+    //Check Report Source
+    if (_Source == nil) {
+        //Alert For  Missing Image
+        UIAlertController* alert = [UIAlertController alertControllerWithTitle:@"Source Missing" message:@"Please Browse For An Image To Submit" preferredStyle:UIAlertControllerStyleAlert];
         
-        //Image Not Set
-        if (_Source == nil) {
-            
-            //Alert For  Missing Image
-            UIAlertController* alert = [UIAlertController alertControllerWithTitle:@"Source Missing" message:@"Please Browse For An Image To Submit" preferredStyle:UIAlertControllerStyleAlert];
-            
-            UIAlertAction* okButton = [UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleCancel handler:nil];
-            
-            [alert addAction: okButton];
-            [self presentViewController:alert animated:YES completion:nil];
-            
-        }
-        else{
-            
-            //Declare File Name
-            metadata.contentType = @"image/jpeg";
-            
-            //Upload File
-            FIRStorageUploadTask *upload = [folderRef putFile:_Source metadata:metadata];
-
-            // Upload reported progress
-            [upload observeStatus:FIRStorageTaskStatusProgress handler:^(FIRStorageTaskSnapshot *snapshot) {
-                double percentComplete = 100.0 * (snapshot.progress.completedUnitCount) / (snapshot.progress.totalUnitCount);
-                
-                NSLog(@"Upload Percent: %lf", percentComplete);
-                
-            }];
-            
-            // Upload completed successfully
-            [upload observeStatus:FIRStorageTaskStatusSuccess handler:^(FIRStorageTaskSnapshot *snapshot) {
-                
-                UIAlertController* alert = [UIAlertController alertControllerWithTitle:@"Upload Successful" message:@"Thank You, Your Report Will Be Reviewed and Actions Will Be Taken If Necessary" preferredStyle:UIAlertControllerStyleAlert];
-                
-                UIAlertAction* okButton = [UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleCancel handler:^(UIAlertAction *PresentSegue){
-                    
-                    UIStoryboard *sb = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
-                    UIViewController *vc = [sb instantiateViewControllerWithIdentifier:@"MIRA"];
-                    [self presentViewController:vc animated:YES completion:nil];
-                    
-                }];
-                
-                [alert addAction: okButton];
-                [self presentViewController:alert animated:YES completion:nil];
-                
-            }];
-            
-            // Errors only occur in the "Failure" case
-            [upload observeStatus:FIRStorageTaskStatusFailure handler:^(FIRStorageTaskSnapshot *snapshot) {
-                if (snapshot.error != nil) {
-                    switch (snapshot.error.code) {
-                        case FIRStorageErrorCodeObjectNotFound:
-                            
-                            NSLog(@"Error: Object Not Found!");
-                            
-                            break;
-                            
-                        case FIRStorageErrorCodeUnauthorized:
-                            NSLog(@"Error: No Authorization To Access File");
-                            break;
-                            
-                        case FIRStorageErrorCodeCancelled:
-                            NSLog(@"Error: Canceled");
-                            break;
-                            
-                        case FIRStorageErrorCodeUnknown:
-                            NSLog(@"Error: Unknown Error, Please Inspect Server Response");
-                            break;
-                    }
-                }
-            }];
-            
-        }
+        UIAlertAction* okButton = [UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleCancel handler:nil];
         
+        [alert addAction: okButton];
+        [self presentViewController:alert animated:YES completion:nil];
     }
-    
-    //Video
     else{
         
-        //Image Not Set
-        if (_Source == nil) {
+        //Open Library (Photo)
+        if ([_ReportType isEqualToString:@"Photo"]) {
+            //Declare File Name
+            metadata.contentType = @"image/jpeg";
+        }
+
+        //Upload File
+        FIRStorageUploadTask *upload = [folderRef putFile:_Source metadata:metadata];
+        
+        //-----     Progress Bar Popup      -----//
+        UIAlertController* alert = [UIAlertController alertControllerWithTitle:@"Uploading Files" message:@"Please wait while we upload the files" preferredStyle:UIAlertControllerStyleAlert];
+        
+        [alert addAction:[UIAlertAction actionWithTitle:@"Cancel" style:UIAlertActionStyleCancel handler:^(UIAlertAction *action){
+            [[self progBar] removeFromSuperview];
+            [upload cancel];
+        }]];
+        
+        [self presentViewController:alert animated:YES completion:^{
+            [self showProgressBar];
+        }];
+        
+        // Upload reported progress
+        [upload observeStatus:FIRStorageTaskStatusProgress handler:^(FIRStorageTaskSnapshot *snapshot) {
+            double percentComplete = 100.0 * (snapshot.progress.completedUnitCount) / (snapshot.progress.totalUnitCount);
             
-            //Alert For  Missing Video
-            UIAlertController* alert = [UIAlertController alertControllerWithTitle:@"Source Missing" message:@"Please Browse For An Video To Submit" preferredStyle:UIAlertControllerStyleAlert];
+            NSLog(@"Upload Percent: %lf", percentComplete);
             
-            UIAlertAction* okButton = [UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleCancel handler:nil];
+            if (percentComplete >= 100) {
+                [[self progBar] removeFromSuperview];
+                [self dismissViewControllerAnimated:alert completion:nil];
+            }
+            else{
+                [self progBar].progress = percentComplete/100.0;
+            }
+            
+        }];
+        
+        // Upload completed successfully
+        [upload observeStatus:FIRStorageTaskStatusSuccess handler:^(FIRStorageTaskSnapshot *snapshot) {
+            
+            UIAlertController* alert = [UIAlertController alertControllerWithTitle:@"Upload Successful" message:@"Thank You, Your Report Will Be Reviewed and Actions Will Be Taken If Necessary" preferredStyle:UIAlertControllerStyleAlert];
+            
+            UIAlertAction* okButton = [UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleCancel handler:^(UIAlertAction *PresentSegue){
+                
+                UIStoryboard *sb = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
+                UIViewController *vc = [sb instantiateViewControllerWithIdentifier:@"MIRA"];
+                [self presentViewController:vc animated:YES completion:nil];
+                
+            }];
             
             [alert addAction: okButton];
             [self presentViewController:alert animated:YES completion:nil];
             
-        }
-        else{
-            
-            //Declare File Name
-            FIRStorageMetadata *metadata = [[FIRStorageMetadata alloc]init];
-            //metadata.contentType = @"image/jpeg";
-            
-            //Upload File
-            FIRStorageUploadTask *upload = [folderRef putFile:_Source metadata:metadata];
-            
-            // Upload reported progress
-            [upload observeStatus:FIRStorageTaskStatusProgress handler:^(FIRStorageTaskSnapshot *snapshot) {
-                double percentComplete = 100.0 * (snapshot.progress.completedUnitCount) / (snapshot.progress.totalUnitCount);
-                
-                NSLog(@"Upload Percent: %lf", percentComplete);
-                
-            }];
-            
-            // Upload completed successfully
-            [upload observeStatus:FIRStorageTaskStatusSuccess handler:^(FIRStorageTaskSnapshot *snapshot) {
-                
-                UIAlertController* alert = [UIAlertController alertControllerWithTitle:@"Upload Successful" message:@"Thank You, Your Report Will Be Reviewed and Actions Will Be Taken If Necessary" preferredStyle:UIAlertControllerStyleAlert];
-                
-                UIAlertAction* okButton = [UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleCancel handler:^(UIAlertAction *PresentSegue){
-                    
-                    UIStoryboard *sb = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
-                    UIViewController *vc = [sb instantiateViewControllerWithIdentifier:@"MIRA"];
-                    [self presentViewController:vc animated:YES completion:nil];
-                    
-                }];
-                
-                [alert addAction: okButton];
-                [self presentViewController:alert animated:YES completion:nil];
-                
-            }];
-            
-            // Errors only occur in the "Failure" case
-            [upload observeStatus:FIRStorageTaskStatusFailure handler:^(FIRStorageTaskSnapshot *snapshot) {
-                if (snapshot.error != nil) {
-                    switch (snapshot.error.code) {
-                        case FIRStorageErrorCodeObjectNotFound:
-                            
-                            NSLog(@"Error: Object Not Found!");
-                            
-                            break;
-                            
-                        case FIRStorageErrorCodeUnauthorized:
-                            NSLog(@"Error: No Authorization To Access File");
-                            break;
-                            
-                        case FIRStorageErrorCodeCancelled:
-                            NSLog(@"Error: Canceled");
-                            break;
-                            
-                        case FIRStorageErrorCodeUnknown:
-                            NSLog(@"Error: Unknown Error, Please Inspect Server Response");
-                            break;
-                    }
-                }
-            }];
-            
-        }
+        }];
         
+        // Errors only occur in the "Failure" case
+        [upload observeStatus:FIRStorageTaskStatusFailure handler:^(FIRStorageTaskSnapshot *snapshot) {
+            if (snapshot.error != nil) {
+                switch (snapshot.error.code) {
+                    case FIRStorageErrorCodeObjectNotFound:
+                        
+                        NSLog(@"Error: Object Not Found!");
+                        
+                        break;
+                        
+                    case FIRStorageErrorCodeUnauthorized:
+                        NSLog(@"Error: No Authorization To Access File");
+                        break;
+                        
+                    case FIRStorageErrorCodeCancelled:
+                        NSLog(@"Error: Canceled");
+                        break;
+                        
+                    case FIRStorageErrorCodeUnknown:
+                        NSLog(@"Error: Unknown Error, Please Inspect Server Response");
+                        break;
+                }
+            }
+        }];
     }
         
 }

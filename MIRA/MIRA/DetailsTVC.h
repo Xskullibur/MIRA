@@ -25,5 +25,6 @@
 @property NSString* ReportType;
 @property NSString* name;
 @property NSURL* Source;
+@property UIProgressView* progBar;
 
 @end
