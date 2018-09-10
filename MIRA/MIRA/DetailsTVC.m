@@ -18,11 +18,21 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
+    [self setupKeyboardDismissTaps];
+    
+    //Browse Text Box Design
     _sourceNameTxt.layer.borderColor = [UIColor lightGrayColor].CGColor;
     _sourceNameTxt.layer.borderWidth = 1.0;
-    _Categorys = [[NSMutableArray alloc] initWithObjects:@"Safety Issues", @"Acts Of Kindness", @"Energy Conservation Issues", @"Incidents", nil];
     
+    //-----     Category Picker View        ------//
+    _Categorys = [[NSMutableArray alloc] initWithObjects:@"Safety Issues", @"Acts Of Kindness", @"Energy Conservation Issues", @"Incidents", nil];
     [_categoryPicker selectRow:ceil(_Categorys.count / 2) inComponent:0 animated:NO];
+    
+    //-----     Location PickerxView        ------//
+    _Floor = [[NSMutableArray alloc] initWithObjects:@"Level 1", @"Level 2", @"Level 3", @"Level 4", @"Level 5", @"Level 6", @"Level 7", nil];
+    _Block = [[NSMutableArray alloc] initWithObjects:@"Block A", @"Block B", @"Block C", @"Block D", @"Block E", @"Block F", @"Block G", @"Block H", @"Block J", @"Block K", @"Aquatic Centre", @"Amphi Theatre", @"Football Field",nil];
+    
+    
     
     // Uncomment the following line to preserve selection between presentations.
     // self.clearsSelectionOnViewWillAppear = NO;
@@ -36,6 +46,43 @@
     // Dispose of any resources that can be recreated.
 }
 
+-(void)dismissKeyboard{
+    [self.view endEditing:YES];
+}
+-(void)scrollViewWillBeginDragging:(UIScrollView *)scrollView{
+    [self dismissKeyboard];
+}
+-(void)setupKeyboardDismissTaps {
+    //Tap Gesture
+    UITapGestureRecognizer *TGR = [[UITapGestureRecognizer alloc]initWithTarget:self action:@selector(dismissKeyboard)];
+    [self.tableView addGestureRecognizer:TGR];
+    
+    //Swipe Up Gesture
+    UISwipeGestureRecognizer *SGRup = [[UISwipeGestureRecognizer alloc] initWithTarget:self action:@selector(dismissKeyboard)];
+    SGRup.cancelsTouchesInView = NO;
+    SGRup.direction = UISwipeGestureRecognizerDirectionUp;
+    [self.tableView addGestureRecognizer:SGRup];
+    
+    //Down
+    UISwipeGestureRecognizer *SGRdown = [[UISwipeGestureRecognizer alloc] initWithTarget:self action:@selector(dismissKeyboard)];
+    SGRdown.cancelsTouchesInView = NO;
+    SGRdown.direction = UISwipeGestureRecognizerDirectionDown;
+    [self.tableView addGestureRecognizer:SGRdown];
+    
+    //Left
+    UISwipeGestureRecognizer *SGRleft = [[UISwipeGestureRecognizer alloc] initWithTarget:self action:@selector(dismissKeyboard)];
+    SGRleft.cancelsTouchesInView = NO;
+    SGRleft.direction = UISwipeGestureRecognizerDirectionLeft;
+    [self.tableView addGestureRecognizer:SGRleft];
+    
+    //Right
+    UISwipeGestureRecognizer *SGRright = [[UISwipeGestureRecognizer alloc] initWithTarget:self action:@selector(dismissKeyboard)];
+    SGRright.cancelsTouchesInView = NO;
+    SGRright.direction = UISwipeGestureRecognizerDirectionRight;
+    [self.tableView addGestureRecognizer:SGRright];
+}
+
+//Progress Bar
 -(void)showProgressBar{
     
     float width = 232;

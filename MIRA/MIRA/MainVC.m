@@ -34,13 +34,6 @@
     
     vc.ReportType = _reportType;
     
-//    if ([_tableview indexPathForSelectedRow] == [NSIndexPath indexPathWithIndex:1]) {
-//        vc.ReportType = @"Photo";
-//    }
-//    else{
-//        vc.ReportType = @"Video";
-//    }
-    
 }
 
 #pragma mark - Table View
@@ -62,8 +55,12 @@
     
 }
 
+- (CGFloat)tableView:(UITableView *)tableView estimatedHeightForRowAtIndexPath:(NSIndexPath *)indexPath{
+    return 180;
+}
+
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
-    return  180;
+    return UITableViewAutomaticDimension;
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{

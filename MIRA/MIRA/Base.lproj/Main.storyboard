@@ -6,6 +6,7 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
+        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -31,10 +32,10 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="camera" translatesAutoresizingMaskIntoConstraints="NO" id="GRu-zg-xWv">
-                                                    <rect key="frame" x="0.0" y="0.0" width="343" height="180"/>
+                                                    <rect key="frame" x="0.0" y="0.0" width="343" height="178.66666666666666"/>
                                                 </imageView>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Photo" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="e4O-uN-E0n">
-                                                    <rect key="frame" x="0.0" y="0.0" width="343" height="180"/>
+                                                    <rect key="frame" x="0.0" y="0.0" width="343" height="178.66666666666666"/>
                                                     <color key="backgroundColor" white="0.39607747399166665" alpha="0.60273972602739723" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                     <fontDescription key="fontDescription" name="TrebuchetMS-Bold" family="Trebuchet MS" pointSize="34"/>
                                                     <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -48,6 +49,7 @@
                                                 <constraint firstItem="e4O-uN-E0n" firstAttribute="leading" secondItem="Nlv-MP-AWZ" secondAttribute="leading" id="H3s-Ug-OP0"/>
                                                 <constraint firstItem="e4O-uN-E0n" firstAttribute="top" secondItem="Nlv-MP-AWZ" secondAttribute="top" id="KXW-k3-dQh"/>
                                                 <constraint firstItem="e4O-uN-E0n" firstAttribute="height" secondItem="Nlv-MP-AWZ" secondAttribute="height" id="Q4y-dB-lIO"/>
+                                                <constraint firstItem="GRu-zg-xWv" firstAttribute="width" secondItem="Nlv-MP-AWZ" secondAttribute="height" multiplier="343:179" id="X9B-wW-LV8"/>
                                                 <constraint firstItem="GRu-zg-xWv" firstAttribute="top" secondItem="Nlv-MP-AWZ" secondAttribute="top" id="ZkN-JT-qbj"/>
                                                 <constraint firstItem="GRu-zg-xWv" firstAttribute="leading" secondItem="Nlv-MP-AWZ" secondAttribute="leading" id="drG-43-m3P"/>
                                                 <constraint firstAttribute="bottom" secondItem="e4O-uN-E0n" secondAttribute="bottom" constant="-0.33333333333334281" id="eGD-3W-0Hm"/>
@@ -65,10 +67,10 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="video" translatesAutoresizingMaskIntoConstraints="NO" id="73o-kb-oOy">
-                                                    <rect key="frame" x="0.0" y="-1" width="343" height="180"/>
+                                                    <rect key="frame" x="0.0" y="-1" width="343" height="178.66666666666666"/>
                                                 </imageView>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Video" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1RW-o5-rc5">
-                                                    <rect key="frame" x="0.0" y="0.0" width="343" height="180"/>
+                                                    <rect key="frame" x="0.0" y="0.0" width="343" height="178.66666666666666"/>
                                                     <color key="backgroundColor" white="0.39607747399166665" alpha="0.60273972602739723" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                     <fontDescription key="fontDescription" name="TrebuchetMS-Bold" family="Trebuchet MS" pointSize="34"/>
                                                     <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -81,6 +83,7 @@
                                                 <constraint firstItem="73o-kb-oOy" firstAttribute="leading" secondItem="8Ek-De-FtQ" secondAttribute="leading" id="Hj8-81-hzO"/>
                                                 <constraint firstAttribute="bottom" secondItem="1RW-o5-rc5" secondAttribute="bottom" constant="-0.33333333333334281" id="Iiq-ZK-yj5"/>
                                                 <constraint firstAttribute="trailing" secondItem="1RW-o5-rc5" secondAttribute="trailing" id="Im7-Bl-IEA"/>
+                                                <constraint firstItem="73o-kb-oOy" firstAttribute="width" secondItem="8Ek-De-FtQ" secondAttribute="height" multiplier="343:179" id="JRH-E1-nC0"/>
                                                 <constraint firstItem="73o-kb-oOy" firstAttribute="width" secondItem="8Ek-De-FtQ" secondAttribute="width" id="Tjo-M2-MGF"/>
                                                 <constraint firstItem="73o-kb-oOy" firstAttribute="height" secondItem="8Ek-De-FtQ" secondAttribute="height" id="ZrE-K0-Mof"/>
                                                 <constraint firstItem="1RW-o5-rc5" firstAttribute="height" secondItem="8Ek-De-FtQ" secondAttribute="height" id="aEM-vy-Jl3"/>
@@ -136,7 +139,7 @@
                                             <rect key="frame" x="0.0" y="0.0" width="375" height="199.66666666666666"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <pickerView contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="qgN-Gc-6qJ">
+                                                <pickerView tag="1" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="qgN-Gc-6qJ">
                                                     <rect key="frame" x="16" y="0.0" width="343" height="200"/>
                                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
                                                     <connections>
@@ -201,7 +204,7 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Bjy-dV-pEx">
-                                                    <rect key="frame" x="279" y="31" width="80" height="40"/>
+                                                    <rect key="frame" x="279" y="30" width="80" height="40"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     <color key="backgroundColor" red="0.21484375" green="0.56835650270833338" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
@@ -219,7 +222,7 @@
                                                     </connections>
                                                 </button>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="K6P-af-aeT">
-                                                    <rect key="frame" x="35" y="35" width="236" height="30"/>
+                                                    <rect key="frame" x="16" y="35" width="236" height="30"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="20"/>
                                                     <nil key="textColor"/>
