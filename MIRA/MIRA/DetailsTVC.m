@@ -18,11 +18,21 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
+    [self setupKeyboardDismissTaps];
+    
+    //Browse Text Box Design
     _sourceNameTxt.layer.borderColor = [UIColor lightGrayColor].CGColor;
     _sourceNameTxt.layer.borderWidth = 1.0;
-    _Categorys = [[NSMutableArray alloc] initWithObjects:@"Safety Issues", @"Acts Of Kindness", @"Energy Conservation Issues", @"Incidents", nil];
     
+    //-----     Category Picker View        ------//
+    _Categorys = [[NSMutableArray alloc] initWithObjects:@"Safety Issues", @"Acts Of Kindness", @"Energy Conservation Issues", @"Incidents", nil];
     [_categoryPicker selectRow:ceil(_Categorys.count / 2) inComponent:0 animated:NO];
+    
+    //-----     Location PickerxView        ------//
+    _Floor = [[NSMutableArray alloc] initWithObjects:@"Level 1", @"Level 2", @"Level 3", @"Level 4", @"Level 5", @"Level 6", @"Level 7", nil];
+    _Block = [[NSMutableArray alloc] initWithObjects:@"Block A", @"Block B", @"Block C", @"Block D", @"Block E", @"Block F", @"Block G", @"Block H", @"Block J", @"Block K", @"Aquatic Centre", @"Amphi Theatre", @"Football Field",nil];
+    
+    
     
     // Uncomment the following line to preserve selection between presentations.
     // self.clearsSelectionOnViewWillAppear = NO;
@@ -36,6 +46,43 @@
     // Dispose of any resources that can be recreated.
 }
 
+-(void)dismissKeyboard{
+    [self.view endEditing:YES];
+}
+-(void)scrollViewWillBeginDragging:(UIScrollView *)scrollView{
+    [self dismissKeyboard];
+}
+-(void)setupKeyboardDismissTaps {
+    //Tap Gesture
+    UITapGestureRecognizer *TGR = [[UITapGestureRecognizer alloc]initWithTarget:self action:@selector(dismissKeyboard)];
+    [self.tableView addGestureRecognizer:TGR];
+    
+    //Swipe Up Gesture
+    UISwipeGestureRecognizer *SGRup = [[UISwipeGestureRecognizer alloc] initWithTarget:self action:@selector(dismissKeyboard)];
+    SGRup.cancelsTouchesInView = NO;
+    SGRup.direction = UISwipeGestureRecognizerDirectionUp;
+    [self.tableView addGestureRecognizer:SGRup];
+    
+    //Down
+    UISwipeGestureRecognizer *SGRdown = [[UISwipeGestureRecognizer alloc] initWithTarget:self action:@selector(dismissKeyboard)];
+    SGRdown.cancelsTouchesInView = NO;
+    SGRdown.direction = UISwipeGestureRecognizerDirectionDown;
+    [self.tableView addGestureRecognizer:SGRdown];
+    
+    //Left
+    UISwipeGestureRecognizer *SGRleft = [[UISwipeGestureRecognizer alloc] initWithTarget:self action:@selector(dismissKeyboard)];
+    SGRleft.cancelsTouchesInView = NO;
+    SGRleft.direction = UISwipeGestureRecognizerDirectionLeft;
+    [self.tableView addGestureRecognizer:SGRleft];
+    
+    //Right
+    UISwipeGestureRecognizer *SGRright = [[UISwipeGestureRecognizer alloc] initWithTarget:self action:@selector(dismissKeyboard)];
+    SGRright.cancelsTouchesInView = NO;
+    SGRright.direction = UISwipeGestureRecognizerDirectionRight;
+    [self.tableView addGestureRecognizer:SGRright];
+}
+
+//Progress Bar
 -(void)showProgressBar{
     
     float width = 232;
@@ -160,23 +207,16 @@
 
 - (IBAction)browseBtnClicked:(id)sender {
     
-    if ([_ReportType isEqualToString:@"Photo"]) {
-        
-        UIImagePickerController *ImagePicker = [[UIImagePickerController alloc] init];
-        ImagePicker.sourceType = UIImagePickerControllerSourceTypePhotoLibrary;
-        ImagePicker.delegate  = self;
-        ImagePicker.allowsEditing = YES;
-        [self presentViewController:ImagePicker animated:YES completion:NULL];
-        
+    UIImagePickerController *ImageVideoPicker = [[UIImagePickerController alloc] init];
+    ImageVideoPicker.sourceType = UIImagePickerControllerSourceTypePhotoLibrary;
+    
+    if ([_ReportType isEqualToString:@"Video"]) {
+        ImageVideoPicker.mediaTypes = @[(NSString*)kUTTypeMovie, (NSString*)kUTTypeAVIMovie, (NSString*)kUTTypeVideo, (NSString*)kUTTypeMPEG4];
     }
-    else{
-        
-        UIImagePickerController *VideoPicker = [[UIImagePickerController alloc] init];
-        VideoPicker.sourceType = UIImagePickerControllerSourceTypePhotoLibrary;
-        VideoPicker.mediaTypes = @[(NSString*)kUTTypeMovie, (NSString*)kUTTypeAVIMovie, (NSString*)kUTTypeVideo, (NSString*)kUTTypeMPEG4];
-        VideoPicker.delegate = self;
-        [self presentViewController:VideoPicker animated:YES completion:nil];
-    }
+    
+    ImageVideoPicker.delegate = self;
+    ImageVideoPicker.allowsEditing = YES;
+    [self presentViewController:ImageVideoPicker animated:YES completion:nil];
     
 }
 
@@ -186,29 +226,26 @@
     
     picker.delegate = self;
     
+    //Image Setting
     if ([_ReportType isEqualToString:@"Photo"]) {
-        
-        //Save Image Info into _Source
         _Source = [info valueForKey:UIImagePickerControllerImageURL];
-        [self dismissViewControllerAnimated:YES completion:nil];
-        _sourceNameTxt.text = [_Source absoluteString];
-        
     }
     else{
-        
-        //Save Video Info to _Source
         _Source = [info valueForKey:UIImagePickerControllerMediaURL];
-        [self dismissViewControllerAnimated:YES completion:nil];
-        _sourceNameTxt.text = [_Source relativeString];
-        
     }
+    
+    [self dismissViewControllerAnimated:YES completion:nil];
+    _sourceNameTxt.text = [_Source lastPathComponent];
     
 }
 
+
+//User Cancel Image Picker
 - (void)imagePickerControllerDidCancel:(UIImagePickerController *)picker{
     [self dismissViewControllerAnimated:YES completion:nil];
 }
 
+//User Clicks Submit
 - (IBAction)submitClicked:(id)sender {
     
     NSString* categoryFolder;
@@ -264,21 +301,9 @@
         _name = @" - (Anonymous)";
     }
 
-    //-----     Set FIREBASE REFERENCE      -----//
-    
-    NSDateFormatter *dateFormat = [[NSDateFormatter alloc] init];
-    [dateFormat setDateStyle:NSDateFormatterMediumStyle];
-    [dateFormat setTimeStyle:NSDateFormatterShortStyle];
-    
-    //Storage Reference
-    FIRStorageReference *storageRef = [[FIRStorage storage] reference];
-    FIRStorageReference *folderRef = [storageRef child: [NSString stringWithFormat:@"%@/%@%@",categoryFolder , [dateFormat stringFromDate:[NSDate date]], _name]];
-    FIRStorageMetadata *metadata = [[FIRStorageMetadata alloc]init];
-    
-    //-----     Check Start Uploading       -----//
-    
     //Check Report Source
     if (_Source == nil) {
+        
         //Alert For  Missing Image
         UIAlertController* alert = [UIAlertController alertControllerWithTitle:@"Source Missing" message:@"Please Browse For An Image To Submit" preferredStyle:UIAlertControllerStyleAlert];
         
@@ -286,19 +311,33 @@
         
         [alert addAction: okButton];
         [self presentViewController:alert animated:YES completion:nil];
+        
     }
     else{
+        
+        //-----     Set FIREBASE REFERENCE      -----//
+        
+        NSDateFormatter *dateFormat = [[NSDateFormatter alloc] init];
+        [dateFormat setDateStyle:NSDateFormatterMediumStyle];
+        [dateFormat setTimeStyle:NSDateFormatterShortStyle];
+        
+        //Storage Reference
+        FIRStorageReference *storageRef = [[FIRStorage storage] reference];
+        FIRStorageReference *folderRef = [storageRef child: [NSString stringWithFormat:@"%@/%@%@",categoryFolder , [dateFormat stringFromDate:[NSDate date]], _name]];
+        FIRStorageMetadata *metadata = [[FIRStorageMetadata alloc]init];
+        
+        //-----     Check Start Uploading       -----//
         
         //Open Library (Photo)
         if ([_ReportType isEqualToString:@"Photo"]) {
             //Declare File Name
             metadata.contentType = @"image/jpeg";
         }
-
+        
         //Upload File
         FIRStorageUploadTask *upload = [folderRef putFile:_Source metadata:metadata];
         
-        //-----     Progress Bar Popup      -----//
+        //-----     Progress Bar Popup          -----//
         UIAlertController* alert = [UIAlertController alertControllerWithTitle:@"Uploading Files" message:@"Please wait while we upload the files" preferredStyle:UIAlertControllerStyleAlert];
         
         [alert addAction:[UIAlertAction actionWithTitle:@"Cancel" style:UIAlertActionStyleCancel handler:^(UIAlertAction *action){
@@ -310,7 +349,7 @@
             [self showProgressBar];
         }];
         
-        // Upload reported progress
+        //-----     Upload reported progress        -----//
         [upload observeStatus:FIRStorageTaskStatusProgress handler:^(FIRStorageTaskSnapshot *snapshot) {
             double percentComplete = 100.0 * (snapshot.progress.completedUnitCount) / (snapshot.progress.totalUnitCount);
             
@@ -326,7 +365,7 @@
             
         }];
         
-        // Upload completed successfully
+        //-----     Upload completed successfully       -----//
         [upload observeStatus:FIRStorageTaskStatusSuccess handler:^(FIRStorageTaskSnapshot *snapshot) {
             
             UIAlertController* alert = [UIAlertController alertControllerWithTitle:@"Upload Successful" message:@"Thank You, Your Report Will Be Reviewed and Actions Will Be Taken If Necessary" preferredStyle:UIAlertControllerStyleAlert];
@@ -344,7 +383,7 @@
             
         }];
         
-        // Errors only occur in the "Failure" case
+        //-----     Errors only occur in the "Failure" case     -----//
         [upload observeStatus:FIRStorageTaskStatusFailure handler:^(FIRStorageTaskSnapshot *snapshot) {
             if (snapshot.error != nil) {
                 switch (snapshot.error.code) {

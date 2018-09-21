@@ -10,7 +10,7 @@
 #import <FirebaseStorage/FirebaseStorage.h>
 #import <MobileCoreServices/MobileCoreServices.h>
 
-@interface DetailsTVC : UITableViewController <UIPickerViewDelegate, UIPickerViewDataSource, UINavigationControllerDelegate, UIImagePickerControllerDelegate>
+@interface DetailsTVC : UITableViewController <UIPickerViewDelegate, UIPickerViewDataSource, UINavigationControllerDelegate, UIImagePickerControllerDelegate, UIScrollViewDelegate>
 
 - (IBAction)anonymousSwitchOn:(id)sender;
 - (IBAction)browseBtnClicked:(id)sender;
@@ -20,8 +20,12 @@
 @property (weak, nonatomic) IBOutlet UITextField *nricTxt;
 @property (weak, nonatomic) IBOutlet UIPickerView *categoryPicker;
 @property (weak, nonatomic) IBOutlet UILabel *sourceNameTxt;
+@property (weak, nonatomic) IBOutlet UIPickerView *locationPicker;
 
 @property NSMutableArray* Categorys;
+@property NSMutableArray* Floor;
+@property NSMutableArray* Block;
+
 @property NSString* ReportType;
 @property NSString* name;
 @property NSURL* Source;
