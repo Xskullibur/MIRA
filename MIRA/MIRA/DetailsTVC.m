@@ -195,6 +195,8 @@
 - (IBAction)anonymousSwitchOn:(id)sender {
     
     if (_anonymousSwitch.isOn) {
+        _nameTxt.text = NULL;
+        _nricTxt.text = NULL;
         _nameTxt.enabled = NO;
         _nricTxt.enabled = NO;
     }
@@ -248,6 +250,7 @@
 //User Clicks Submit
 - (IBAction)submitClicked:(id)sender {
     
+    NSString* category;
     NSString* categoryFolder;
     
     //-----     Check For Report Category       -----//
@@ -255,28 +258,29 @@
     switch ([_categoryPicker selectedRowInComponent:0]) {
         //Safety Issue
         case 0:
-            categoryFolder = @"Safety Issues/";
+            categoryFolder = @"Safety Issues";
             break;
             
         //Acts of Kindness
         case 1:
-            categoryFolder = @"Acts of Kindness/";
+            categoryFolder = @"Acts of Kindness";
             break;
 
         //Energy Conservation Issues
         case 2:
-            categoryFolder = @"Energy Conservation Issues/";
+            categoryFolder = @"Energy Conservation Issues";
             break;
             
         //Incidents
         case 3:
-            categoryFolder = @"Incidents/";
+            categoryFolder = @"Incidents";
             break;
             
         default:
             break;
     }
-    
+    category = categoryFolder;
+    categoryFolder = [categoryFolder stringByAppendingString:@"/"];
     
     //-----     Check if Anonymous Chosen       -----//
     if (!_anonymousSwitch.isOn) {
