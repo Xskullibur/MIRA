@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		FE00B719217C824100B1F60F /* firebaseFunc.m in Sources */ = {isa = PBXBuildFile; fileRef = FE00B718217C824100B1F60F /* firebaseFunc.m */; };
+		FE67596F217C9789003C46EE /* dismissKeyboard.m in Sources */ = {isa = PBXBuildFile; fileRef = FE67596E217C9789003C46EE /* dismissKeyboard.m */; };
 		FE71950D2121EBF9002C10A9 /* nanopb.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FE7195052121EBF7002C10A9 /* nanopb.framework */; };
 		FE71950E2121EBF9002C10A9 /* FirebaseInstanceID.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FE7195062121EBF7002C10A9 /* FirebaseInstanceID.framework */; };
 		FE71950F2121EBF9002C10A9 /* FirebaseAnalytics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FE7195072121EBF7002C10A9 /* FirebaseAnalytics.framework */; };
@@ -50,6 +51,8 @@
 /* Begin PBXFileReference section */
 		FE00B717217C824100B1F60F /* firebaseFunc.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = firebaseFunc.h; sourceTree = "<group>"; };
 		FE00B718217C824100B1F60F /* firebaseFunc.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = firebaseFunc.m; sourceTree = "<group>"; };
+		FE67596D217C9789003C46EE /* dismissKeyboard.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = dismissKeyboard.h; sourceTree = "<group>"; };
+		FE67596E217C9789003C46EE /* dismissKeyboard.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = dismissKeyboard.m; sourceTree = "<group>"; };
 		FE7195052121EBF7002C10A9 /* nanopb.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = nanopb.framework; sourceTree = "<group>"; };
 		FE7195062121EBF7002C10A9 /* FirebaseInstanceID.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = FirebaseInstanceID.framework; sourceTree = "<group>"; };
 		FE7195072121EBF7002C10A9 /* FirebaseAnalytics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = FirebaseAnalytics.framework; sourceTree = "<group>"; };
@@ -122,6 +125,8 @@
 			children = (
 				FE00B717217C824100B1F60F /* firebaseFunc.h */,
 				FE00B718217C824100B1F60F /* firebaseFunc.m */,
+				FE67596D217C9789003C46EE /* dismissKeyboard.h */,
+				FE67596E217C9789003C46EE /* dismissKeyboard.m */,
 			);
 			path = Functions;
 			sourceTree = "<group>";
@@ -337,6 +342,7 @@
 				FEF607612125526E000852AD /* MainVC.m in Sources */,
 				FE81F7F1212560B700D6C450 /* DetailsTVC.m in Sources */,
 				FE8662D82121E4F500B5EFF6 /* main.m in Sources */,
+				FE67596F217C9789003C46EE /* dismissKeyboard.m in Sources */,
 				FE8662CA2121E4F400B5EFF6 /* AppDelegate.m in Sources */,
 				FE00B719217C824100B1F60F /* firebaseFunc.m in Sources */,
 			);

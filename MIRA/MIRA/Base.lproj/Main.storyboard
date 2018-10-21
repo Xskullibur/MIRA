@@ -32,10 +32,10 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="camera" translatesAutoresizingMaskIntoConstraints="NO" id="GRu-zg-xWv">
-                                                    <rect key="frame" x="0.0" y="0.0" width="343" height="179.33333333333334"/>
+                                                    <rect key="frame" x="0.0" y="0.0" width="343" height="178.66666666666666"/>
                                                 </imageView>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Photo" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="e4O-uN-E0n">
-                                                    <rect key="frame" x="0.0" y="0.0" width="343" height="178.66666666666666"/>
+                                                    <rect key="frame" x="0.0" y="0.0" width="343" height="179.33333333333334"/>
                                                     <color key="backgroundColor" white="0.39607747399166665" alpha="0.60273972602739723" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                     <fontDescription key="fontDescription" name="TrebuchetMS-Bold" family="Trebuchet MS" pointSize="34"/>
                                                     <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -65,10 +65,10 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="video" translatesAutoresizingMaskIntoConstraints="NO" id="73o-kb-oOy">
-                                                    <rect key="frame" x="0.0" y="-1" width="343" height="178.66666666666666"/>
+                                                    <rect key="frame" x="0.0" y="-1" width="343" height="179.33333333333334"/>
                                                 </imageView>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Video" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1RW-o5-rc5">
-                                                    <rect key="frame" x="0.0" y="0.0" width="343" height="179.33333333333334"/>
+                                                    <rect key="frame" x="0.0" y="0.0" width="343" height="178.66666666666666"/>
                                                     <color key="backgroundColor" white="0.39607747399166665" alpha="0.60273972602739723" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                     <fontDescription key="fontDescription" name="TrebuchetMS-Bold" family="Trebuchet MS" pointSize="34"/>
                                                     <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -148,10 +148,31 @@
                                     </tableViewCell>
                                 </cells>
                             </tableViewSection>
+                            <tableViewSection headerTitle="Description [Date, Time Location, Event, etc.]" id="cAa-mE-FWH">
+                                <cells>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" rowHeight="200" id="Hch-yK-kmK">
+                                        <rect key="frame" x="0.0" y="311.33333333333337" width="375" height="200"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="Hch-yK-kmK" id="iW3-EC-pkV">
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="199.66666666666666"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="TBS-Rt-JHH">
+                                                    <rect key="frame" x="16" y="11" width="343" height="178"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                    <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                    <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                                                </textView>
+                                            </subviews>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
+                                </cells>
+                            </tableViewSection>
                             <tableViewSection headerTitle="Your Details" id="C8s-bW-dHA">
                                 <cells>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" rowHeight="200" id="ZOb-dI-tsC">
-                                        <rect key="frame" x="0.0" y="311.33333333333337" width="375" height="200"/>
+                                        <rect key="frame" x="0.0" y="567.33333333333337" width="375" height="200"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="ZOb-dI-tsC" id="AKF-dp-0EV">
                                             <rect key="frame" x="0.0" y="0.0" width="375" height="199.66666666666666"/>
@@ -193,7 +214,7 @@
                             <tableViewSection headerTitle="Browse" id="M8O-Gu-85h">
                                 <cells>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" rowHeight="100" id="ZiG-GV-Tzu">
-                                        <rect key="frame" x="0.0" y="567.33333333333337" width="375" height="100"/>
+                                        <rect key="frame" x="0.0" y="823.33333333333337" width="375" height="100"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="ZiG-GV-Tzu" id="50N-PO-cAs">
                                             <rect key="frame" x="0.0" y="0.0" width="375" height="99.666666666666671"/>
@@ -251,6 +272,7 @@
                     <connections>
                         <outlet property="anonymousSwitch" destination="vOb-s5-PL0" id="tIN-yS-dBK"/>
                         <outlet property="categoryPicker" destination="qgN-Gc-6qJ" id="zWp-cY-ybu"/>
+                        <outlet property="descTxt" destination="TBS-Rt-JHH" id="Djw-SS-iJF"/>
                         <outlet property="nameTxt" destination="oWP-6e-E9U" id="gRj-ae-g3T"/>
                         <outlet property="nricTxt" destination="Bft-RK-2xx" id="Opu-LI-qRR"/>
                         <outlet property="sourceNameTxt" destination="K6P-af-aeT" id="csN-5q-0Dh"/>

@@ -149,40 +149,6 @@
 */
 
 /*
-// Override to support conditional editing of the table view.
-- (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath {
-    // Return NO if you do not want the specified item to be editable.
-    return YES;
-}
-*/
-
-/*
-// Override to support editing the table view.
-- (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath {
-    if (editingStyle == UITableViewCellEditingStyleDelete) {
-        // Delete the row from the data source
-        [tableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationFade];
-    } else if (editingStyle == UITableViewCellEditingStyleInsert) {
-        // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
-    }   
-}
-*/
-
-/*
-// Override to support rearranging the table view.
-- (void)tableView:(UITableView *)tableView moveRowAtIndexPath:(NSIndexPath *)fromIndexPath toIndexPath:(NSIndexPath *)toIndexPath {
-}
-*/
-
-/*
-// Override to support conditional rearranging of the table view.
-- (BOOL)tableView:(UITableView *)tableView canMoveRowAtIndexPath:(NSIndexPath *)indexPath {
-    // Return NO if you do not want the item to be re-orderable.
-    return YES;
-}
-*/
-
-/*
 #pragma mark - Navigation
 
 // In a storyboard-based application, you will often want to do a little preparation before navigation
@@ -283,12 +249,30 @@
     categoryFolder = [categoryFolder stringByAppendingString:@"/"];
     
     //-----     Check if Anonymous Chosen       -----//
-    if (!_anonymousSwitch.isOn) {
+    
+    //Incorrect Format
+    if (!_anonymousSwitch.isOn && (!_nricTxt.hasText || !_nameTxt.hasText)) {
+        UIAlertController* alert = [UIAlertController alertControllerWithTitle:@"Missing Fields" message:@"Please Fill in your NRIC and Name if you do not wish to be Anonymous" preferredStyle:UIAlertControllerStyleAlert];
         
-        //Check if information filled
-        if (!_nricTxt.hasText || !_nameTxt.hasText) {
+        UIAlertAction* okButton = [UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleCancel handler:nil];
+        
+        [alert addAction: okButton];
+        [self presentViewController:alert animated:YES completion:nil];
+    }
+    else{
+        //Correct Format
+        if (!_anonymousSwitch.isOn) {
+            _name = [NSString stringWithFormat:@" - (%@, %@)", _nricTxt.text, _nameTxt.text];
+        }
+        else{
+             _name = @" - (Anonymous)";
+        }
+        
+        //-----     Check Report Source     -----//
+        if (_Source == nil) {
             
-            UIAlertController* alert = [UIAlertController alertControllerWithTitle:@"Missing Fields" message:@"Please Fill in your NRIC and Name if you do not wish to be Anonymous" preferredStyle:UIAlertControllerStyleAlert];
+            //Alert For  Missing Image
+            UIAlertController* alert = [UIAlertController alertControllerWithTitle:@"Source Missing" message:@"Please Browse For An Image To Submit" preferredStyle:UIAlertControllerStyleAlert];
             
             UIAlertAction* okButton = [UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleCancel handler:nil];
             
@@ -297,82 +281,61 @@
             
         }
         else{
-            _name = [NSString stringWithFormat:@" - (%@, %@)", _nricTxt.text, _nameTxt.text];
-        }
-        
-    }
-    else{
-        _name = @" - (Anonymous)";
-    }
-
-    //Check Report Source
-    if (_Source == nil) {
-        
-        //Alert For  Missing Image
-        UIAlertController* alert = [UIAlertController alertControllerWithTitle:@"Source Missing" message:@"Please Browse For An Image To Submit" preferredStyle:UIAlertControllerStyleAlert];
-        
-        UIAlertAction* okButton = [UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleCancel handler:nil];
-        
-        [alert addAction: okButton];
-        [self presentViewController:alert animated:YES completion:nil];
-        
-    }
-    else{
-        
-        //-----     Format Folder Name      -----//
-        NSDateFormatter *dateFormat = [[NSDateFormatter alloc] init];
-        [dateFormat setDateStyle:NSDateFormatterMediumStyle];
-        [dateFormat setTimeStyle:NSDateFormatterShortStyle];
-        NSString *folderName = [NSString stringWithFormat:@"%@/%@%@",categoryFolder , [dateFormat stringFromDate:[NSDate date]], _name];
-        
-        FIRStorageUploadTask* upload = [firebaseFunc fireStorageSetupWithFolderName:folderName ReportType:_ReportType Source:_Source];
-        
-        //-----     Upload Progress         -----//
-        //Progress Bar
-        UIAlertController* alert = [UIAlertController alertControllerWithTitle:@"Uploading Files" message:@"Please wait while we upload the files" preferredStyle:UIAlertControllerStyleAlert];
-        
-        [alert addAction:[UIAlertAction actionWithTitle:@"Cancel" style:UIAlertActionStyleCancel handler:^(UIAlertAction *action){
-            [[self progBar] removeFromSuperview];
-            [upload cancel];
-        }]];
-        
-        [self presentViewController:alert animated:YES completion:^{
-            [self showProgressBar];
-        }];
-        //Upload Progress
-        [upload observeStatus:FIRStorageTaskStatusProgress handler:^(FIRStorageTaskSnapshot *snapshot) {
-            double percentComplete = 100.0 * (snapshot.progress.completedUnitCount) / (snapshot.progress.totalUnitCount);
             
-            NSLog(@"Upload Percent: %lf", percentComplete);
+            //-----     Format Folder Name      -----//
+            NSDateFormatter *dateFormat = [[NSDateFormatter alloc] init];
+            [dateFormat setDateStyle:NSDateFormatterMediumStyle];
+            [dateFormat setTimeStyle:NSDateFormatterShortStyle];
+            NSString *folderName = [NSString stringWithFormat:@"%@/%@%@",categoryFolder , [dateFormat stringFromDate:[NSDate date]], _name];
             
-            if (percentComplete >= 100) {
+            FIRStorageUploadTask* upload = [firebaseFunc fireStorageSetupWithFolderName:folderName ReportType:_ReportType Source:_Source];
+            
+            //-----     Upload Progress         -----//
+            //Progress Bar
+            UIAlertController* alert = [UIAlertController alertControllerWithTitle:@"Uploading Files" message:@"Please wait while we upload the files" preferredStyle:UIAlertControllerStyleAlert];
+            
+            [alert addAction:[UIAlertAction actionWithTitle:@"Cancel" style:UIAlertActionStyleCancel handler:^(UIAlertAction *action){
                 [[self progBar] removeFromSuperview];
-                [self dismissViewControllerAnimated:alert completion:nil];
-            }
-            else{
-                [self progBar].progress = percentComplete/100.0;
-            }
+                [upload cancel];
+            }]];
             
-        }];
-        //Upload Successful
-        [upload observeStatus:FIRStorageTaskStatusSuccess handler:^(FIRStorageTaskSnapshot *snapshot) {
-            
-            UIAlertController* alert = [UIAlertController alertControllerWithTitle:@"Upload Successful" message:@"Thank You, Your Report Will Be Reviewed and Actions Will Be Taken If Necessary" preferredStyle:UIAlertControllerStyleAlert];
-            
-            UIAlertAction* okButton = [UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleCancel handler:^(UIAlertAction *PresentSegue){
+            [self presentViewController:alert animated:YES completion:^{
+                [self showProgressBar];
+            }];
+            //Upload Progress
+            [upload observeStatus:FIRStorageTaskStatusProgress handler:^(FIRStorageTaskSnapshot *snapshot) {
+                double percentComplete = 100.0 * (snapshot.progress.completedUnitCount) / (snapshot.progress.totalUnitCount);
                 
-                UIStoryboard *sb = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
-                UIViewController *vc = [sb instantiateViewControllerWithIdentifier:@"MIRA"];
-                [self presentViewController:vc animated:YES completion:nil];
+                NSLog(@"Upload Percent: %lf", percentComplete);
+                
+                if (percentComplete >= 100) {
+                    [[self progBar] removeFromSuperview];
+                    [self dismissViewControllerAnimated:alert completion:nil];
+                }
+                else{
+                    [self progBar].progress = percentComplete/100.0;
+                }
                 
             }];
-            
-            [alert addAction: okButton];
-            [self presentViewController:alert animated:YES completion:nil];
-            
-        }];
+            //Upload Successful
+            [upload observeStatus:FIRStorageTaskStatusSuccess handler:^(FIRStorageTaskSnapshot *snapshot) {
+                
+                UIAlertController* alert = [UIAlertController alertControllerWithTitle:@"Upload Successful" message:@"Thank You, Your Report Will Be Reviewed and Actions Will Be Taken If Necessary" preferredStyle:UIAlertControllerStyleAlert];
+                
+                UIAlertAction* okButton = [UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleCancel handler:^(UIAlertAction *PresentSegue){
+                    
+                    UIStoryboard *sb = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
+                    UIViewController *vc = [sb instantiateViewControllerWithIdentifier:@"MIRA"];
+                    [self presentViewController:vc animated:YES completion:nil];
+                    
+                }];
+                
+                [alert addAction: okButton];
+                [self presentViewController:alert animated:YES completion:nil];
+                
+            }];
+        }
     }
-        
 }
 
 @end

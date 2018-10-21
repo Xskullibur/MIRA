@@ -21,6 +21,7 @@
 @property (weak, nonatomic) IBOutlet UITextField *nricTxt;
 @property (weak, nonatomic) IBOutlet UIPickerView *categoryPicker;
 @property (weak, nonatomic) IBOutlet UILabel *sourceNameTxt;
+@property (weak, nonatomic) IBOutlet UITextView *descTxt;
 @property (weak, nonatomic) IBOutlet UIPickerView *locationPicker;
 
 @property NSMutableArray* Categorys;
