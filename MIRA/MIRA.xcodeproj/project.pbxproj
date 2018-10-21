@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		FE00B719217C824100B1F60F /* firebaseFunc.m in Sources */ = {isa = PBXBuildFile; fileRef = FE00B718217C824100B1F60F /* firebaseFunc.m */; };
 		FE71950D2121EBF9002C10A9 /* nanopb.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FE7195052121EBF7002C10A9 /* nanopb.framework */; };
 		FE71950E2121EBF9002C10A9 /* FirebaseInstanceID.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FE7195062121EBF7002C10A9 /* FirebaseInstanceID.framework */; };
 		FE71950F2121EBF9002C10A9 /* FirebaseAnalytics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FE7195072121EBF7002C10A9 /* FirebaseAnalytics.framework */; };
@@ -18,7 +19,6 @@
 		FE7195172121EC44002C10A9 /* FirebaseStorage.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FE7195152121EC44002C10A9 /* FirebaseStorage.framework */; };
 		FE7195182121EC44002C10A9 /* GTMSessionFetcher.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FE7195162121EC44002C10A9 /* GTMSessionFetcher.framework */; };
 		FE71951B2121EE4F002C10A9 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = FE71951A2121EE4F002C10A9 /* GoogleService-Info.plist */; };
-		FE78498E2164DF2500D09AAB /* EmailService.m in Sources */ = {isa = PBXBuildFile; fileRef = FE78498D2164DF2500D09AAB /* EmailService.m */; };
 		FE81F7F1212560B700D6C450 /* DetailsTVC.m in Sources */ = {isa = PBXBuildFile; fileRef = FE81F7F0212560B700D6C450 /* DetailsTVC.m */; };
 		FE8662CA2121E4F400B5EFF6 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = FE8662C92121E4F400B5EFF6 /* AppDelegate.m */; };
 		FE8662D02121E4F400B5EFF6 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FE8662CE2121E4F400B5EFF6 /* Main.storyboard */; };
@@ -48,6 +48,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		FE00B717217C824100B1F60F /* firebaseFunc.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = firebaseFunc.h; sourceTree = "<group>"; };
+		FE00B718217C824100B1F60F /* firebaseFunc.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = firebaseFunc.m; sourceTree = "<group>"; };
 		FE7195052121EBF7002C10A9 /* nanopb.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = nanopb.framework; sourceTree = "<group>"; };
 		FE7195062121EBF7002C10A9 /* FirebaseInstanceID.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = FirebaseInstanceID.framework; sourceTree = "<group>"; };
 		FE7195072121EBF7002C10A9 /* FirebaseAnalytics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = FirebaseAnalytics.framework; sourceTree = "<group>"; };
@@ -60,8 +62,6 @@
 		FE7195162121EC44002C10A9 /* GTMSessionFetcher.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = GTMSessionFetcher.framework; sourceTree = "<group>"; };
 		FE7195192121ED02002C10A9 /* Firebase.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Firebase.h; sourceTree = "<group>"; };
 		FE71951A2121EE4F002C10A9 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
-		FE78498C2164DF2500D09AAB /* EmailService.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = EmailService.h; sourceTree = "<group>"; };
-		FE78498D2164DF2500D09AAB /* EmailService.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = EmailService.m; sourceTree = "<group>"; };
 		FE81F7EF212560B700D6C450 /* DetailsTVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DetailsTVC.h; sourceTree = "<group>"; };
 		FE81F7F0212560B700D6C450 /* DetailsTVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DetailsTVC.m; sourceTree = "<group>"; };
 		FE8662C52121E4F400B5EFF6 /* MIRA.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MIRA.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -117,6 +117,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		FE00B716217C821C00B1F60F /* Functions */ = {
+			isa = PBXGroup;
+			children = (
+				FE00B717217C824100B1F60F /* firebaseFunc.h */,
+				FE00B718217C824100B1F60F /* firebaseFunc.m */,
+			);
+			path = Functions;
+			sourceTree = "<group>";
+		};
 		FE7195042121EBCB002C10A9 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
@@ -157,6 +166,7 @@
 		FE8662C72121E4F400B5EFF6 /* MIRA */ = {
 			isa = PBXGroup;
 			children = (
+				FE00B716217C821C00B1F60F /* Functions */,
 				FE7195042121EBCB002C10A9 /* Frameworks */,
 				FE7195192121ED02002C10A9 /* Firebase.h */,
 				FE8662C82121E4F400B5EFF6 /* AppDelegate.h */,
@@ -171,8 +181,6 @@
 				FE81F7EF212560B700D6C450 /* DetailsTVC.h */,
 				FE81F7F0212560B700D6C450 /* DetailsTVC.m */,
 				FE9F35EC2154E4DD00E1B31E /* Launch Screen.storyboard */,
-				FE78498C2164DF2500D09AAB /* EmailService.h */,
-				FE78498D2164DF2500D09AAB /* EmailService.m */,
 			);
 			path = MIRA;
 			sourceTree = "<group>";
@@ -326,11 +334,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				FE78498E2164DF2500D09AAB /* EmailService.m in Sources */,
 				FEF607612125526E000852AD /* MainVC.m in Sources */,
 				FE81F7F1212560B700D6C450 /* DetailsTVC.m in Sources */,
 				FE8662D82121E4F500B5EFF6 /* main.m in Sources */,
 				FE8662CA2121E4F400B5EFF6 /* AppDelegate.m in Sources */,
+				FE00B719217C824100B1F60F /* firebaseFunc.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

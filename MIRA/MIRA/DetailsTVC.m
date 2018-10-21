@@ -319,29 +319,16 @@
     }
     else{
         
-        //-----     Set FIREBASE REFERENCE      -----//
-        
+        //-----     Format Folder Name      -----//
         NSDateFormatter *dateFormat = [[NSDateFormatter alloc] init];
         [dateFormat setDateStyle:NSDateFormatterMediumStyle];
         [dateFormat setTimeStyle:NSDateFormatterShortStyle];
+        NSString *folderName = [NSString stringWithFormat:@"%@/%@%@",categoryFolder , [dateFormat stringFromDate:[NSDate date]], _name];
         
-        //Storage Reference
-        FIRStorageReference *storageRef = [[FIRStorage storage] reference];
-        FIRStorageReference *folderRef = [storageRef child: [NSString stringWithFormat:@"%@/%@%@",categoryFolder , [dateFormat stringFromDate:[NSDate date]], _name]];
-        FIRStorageMetadata *metadata = [[FIRStorageMetadata alloc]init];
+        FIRStorageUploadTask* upload = [firebaseFunc fireStorageSetupWithFolderName:folderName ReportType:_ReportType Source:_Source];
         
-        //-----     Check Start Uploading       -----//
-        
-        //Open Library (Photo)
-        if ([_ReportType isEqualToString:@"Photo"]) {
-            //Declare File Name
-            metadata.contentType = @"image/jpeg";
-        }
-        
-        //Upload File
-        FIRStorageUploadTask *upload = [folderRef putFile:_Source metadata:metadata];
-        
-        //-----     Progress Bar Popup          -----//
+        //-----     Upload Progress         -----//
+        //Progress Bar
         UIAlertController* alert = [UIAlertController alertControllerWithTitle:@"Uploading Files" message:@"Please wait while we upload the files" preferredStyle:UIAlertControllerStyleAlert];
         
         [alert addAction:[UIAlertAction actionWithTitle:@"Cancel" style:UIAlertActionStyleCancel handler:^(UIAlertAction *action){
@@ -352,8 +339,7 @@
         [self presentViewController:alert animated:YES completion:^{
             [self showProgressBar];
         }];
-        
-        //-----     Upload reported progress        -----//
+        //Upload Progress
         [upload observeStatus:FIRStorageTaskStatusProgress handler:^(FIRStorageTaskSnapshot *snapshot) {
             double percentComplete = 100.0 * (snapshot.progress.completedUnitCount) / (snapshot.progress.totalUnitCount);
             
@@ -368,8 +354,7 @@
             }
             
         }];
-        
-        //-----     Upload completed successfully       -----//
+        //Upload Successful
         [upload observeStatus:FIRStorageTaskStatusSuccess handler:^(FIRStorageTaskSnapshot *snapshot) {
             
             UIAlertController* alert = [UIAlertController alertControllerWithTitle:@"Upload Successful" message:@"Thank You, Your Report Will Be Reviewed and Actions Will Be Taken If Necessary" preferredStyle:UIAlertControllerStyleAlert];
@@ -385,31 +370,6 @@
             [alert addAction: okButton];
             [self presentViewController:alert animated:YES completion:nil];
             
-        }];
-        
-        //-----     Errors only occur in the "Failure" case     -----//
-        [upload observeStatus:FIRStorageTaskStatusFailure handler:^(FIRStorageTaskSnapshot *snapshot) {
-            if (snapshot.error != nil) {
-                switch (snapshot.error.code) {
-                    case FIRStorageErrorCodeObjectNotFound:
-                        
-                        NSLog(@"Error: Object Not Found!");
-                        
-                        break;
-                        
-                    case FIRStorageErrorCodeUnauthorized:
-                        NSLog(@"Error: No Authorization To Access File");
-                        break;
-                        
-                    case FIRStorageErrorCodeCancelled:
-                        NSLog(@"Error: Canceled");
-                        break;
-                        
-                    case FIRStorageErrorCodeUnknown:
-                        NSLog(@"Error: Unknown Error, Please Inspect Server Response");
-                        break;
-                }
-            }
         }];
     }
         

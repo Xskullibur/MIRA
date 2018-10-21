@@ -7,6 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "firebaseFunc.h"
 #import <FirebaseStorage/FirebaseStorage.h>
 #import <MobileCoreServices/MobileCoreServices.h>
 
