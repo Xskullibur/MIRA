@@ -19,8 +19,7 @@
     // Override point for customization after application launch.
     
     [FIRApp configure];
-    FIRStorage *storage = [FIRStorage storage];
-    
+
     return YES;
 }
 

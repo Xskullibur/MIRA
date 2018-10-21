@@ -9,6 +9,8 @@
 #import <UIKit/UIKit.h>
 #import "firebaseFunc.h"
 #import <FirebaseStorage/FirebaseStorage.h>
+#import <FirebaseDatabase/FirebaseDatabase.h>
+#import <FirebaseCore/FirebaseCore.h>
 #import <MobileCoreServices/MobileCoreServices.h>
 
 @interface DetailsTVC : UITableViewController <UIPickerViewDelegate, UIPickerViewDataSource, UINavigationControllerDelegate, UIImagePickerControllerDelegate, UIScrollViewDelegate>

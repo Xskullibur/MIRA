@@ -56,4 +56,8 @@
     return upload;
 }
 
++ (void)fireDatabaseSetup{
+    
+}
+
 @end

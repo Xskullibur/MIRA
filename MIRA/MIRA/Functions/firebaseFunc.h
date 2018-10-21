@@ -8,8 +8,12 @@
 
 #import <Foundation/Foundation.h>
 #import <FirebaseStorage/FirebaseStorage.h>
+#import <FirebaseDatabase/FirebaseDatabase.h>
+#import <FirebaseCore/FirebaseCore.h>
 
 @interface firebaseFunc : NSObject
+
+@property (strong, nonatomic) FIRDatabaseReference *dbRef;
 
 + (FIRStorageUploadTask*)fireStorageSetupWithFolderName :(NSString*)FolderName
                              ReportType:(NSString*)ReportType

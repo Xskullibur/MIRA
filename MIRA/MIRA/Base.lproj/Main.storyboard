@@ -157,14 +157,19 @@
                                             <rect key="frame" x="0.0" y="0.0" width="375" height="199.66666666666666"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="TBS-Rt-JHH">
+                                                <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" keyboardDismissMode="interactive" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="TBS-Rt-JHH">
                                                     <rect key="frame" x="16" y="11" width="343" height="178"/>
-                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                    <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                    <color key="backgroundColor" white="0.90299479166666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="20"/>
                                                     <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                                                 </textView>
                                             </subviews>
+                                            <constraints>
+                                                <constraint firstItem="TBS-Rt-JHH" firstAttribute="top" secondItem="iW3-EC-pkV" secondAttribute="top" constant="11" id="5yy-pn-n5A"/>
+                                                <constraint firstAttribute="trailing" secondItem="TBS-Rt-JHH" secondAttribute="trailing" constant="16" id="AV6-zX-83j"/>
+                                                <constraint firstAttribute="bottom" secondItem="TBS-Rt-JHH" secondAttribute="bottom" constant="10.666666666666657" id="o8j-zG-ZC7"/>
+                                                <constraint firstItem="TBS-Rt-JHH" firstAttribute="leading" secondItem="iW3-EC-pkV" secondAttribute="leading" constant="16" id="p59-bz-0ln"/>
+                                            </constraints>
                                         </tableViewCellContentView>
                                     </tableViewCell>
                                 </cells>

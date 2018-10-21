@@ -9,6 +9,8 @@
 /* Begin PBXBuildFile section */
 		FE00B719217C824100B1F60F /* firebaseFunc.m in Sources */ = {isa = PBXBuildFile; fileRef = FE00B718217C824100B1F60F /* firebaseFunc.m */; };
 		FE67596F217C9789003C46EE /* dismissKeyboard.m in Sources */ = {isa = PBXBuildFile; fileRef = FE67596E217C9789003C46EE /* dismissKeyboard.m */; };
+		FE675972217CA2CF003C46EE /* FirebaseDatabase.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FE675970217CA2CE003C46EE /* FirebaseDatabase.framework */; };
+		FE675973217CA2CF003C46EE /* leveldb-library.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FE675971217CA2CF003C46EE /* leveldb-library.framework */; };
 		FE71950D2121EBF9002C10A9 /* nanopb.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FE7195052121EBF7002C10A9 /* nanopb.framework */; };
 		FE71950E2121EBF9002C10A9 /* FirebaseInstanceID.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FE7195062121EBF7002C10A9 /* FirebaseInstanceID.framework */; };
 		FE71950F2121EBF9002C10A9 /* FirebaseAnalytics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FE7195072121EBF7002C10A9 /* FirebaseAnalytics.framework */; };
@@ -53,6 +55,8 @@
 		FE00B718217C824100B1F60F /* firebaseFunc.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = firebaseFunc.m; sourceTree = "<group>"; };
 		FE67596D217C9789003C46EE /* dismissKeyboard.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = dismissKeyboard.h; sourceTree = "<group>"; };
 		FE67596E217C9789003C46EE /* dismissKeyboard.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = dismissKeyboard.m; sourceTree = "<group>"; };
+		FE675970217CA2CE003C46EE /* FirebaseDatabase.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = FirebaseDatabase.framework; sourceTree = "<group>"; };
+		FE675971217CA2CF003C46EE /* leveldb-library.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = "leveldb-library.framework"; sourceTree = "<group>"; };
 		FE7195052121EBF7002C10A9 /* nanopb.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = nanopb.framework; sourceTree = "<group>"; };
 		FE7195062121EBF7002C10A9 /* FirebaseInstanceID.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = FirebaseInstanceID.framework; sourceTree = "<group>"; };
 		FE7195072121EBF7002C10A9 /* FirebaseAnalytics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = FirebaseAnalytics.framework; sourceTree = "<group>"; };
@@ -95,9 +99,11 @@
 				FE7195112121EBF9002C10A9 /* GoogleAppMeasurement.framework in Frameworks */,
 				FE7195122121EBF9002C10A9 /* FirebaseCoreDiagnostics.framework in Frameworks */,
 				FE7195182121EC44002C10A9 /* GTMSessionFetcher.framework in Frameworks */,
+				FE675973217CA2CF003C46EE /* leveldb-library.framework in Frameworks */,
 				FE7195142121EBF9002C10A9 /* FirebaseCore.framework in Frameworks */,
 				FE7195172121EC44002C10A9 /* FirebaseStorage.framework in Frameworks */,
 				FE7195132121EBF9002C10A9 /* MeasurementNanoPB.framework in Frameworks */,
+				FE675972217CA2CF003C46EE /* FirebaseDatabase.framework in Frameworks */,
 				FE7195102121EBF9002C10A9 /* GoogleUtilities.framework in Frameworks */,
 				FE71950F2121EBF9002C10A9 /* FirebaseAnalytics.framework in Frameworks */,
 			);
@@ -134,6 +140,8 @@
 		FE7195042121EBCB002C10A9 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				FE675970217CA2CE003C46EE /* FirebaseDatabase.framework */,
+				FE675971217CA2CF003C46EE /* leveldb-library.framework */,
 				FE7195152121EC44002C10A9 /* FirebaseStorage.framework */,
 				FE7195162121EC44002C10A9 /* GTMSessionFetcher.framework */,
 				FE7195072121EBF7002C10A9 /* FirebaseAnalytics.framework */,
