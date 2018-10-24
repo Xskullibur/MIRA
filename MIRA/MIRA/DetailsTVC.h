@@ -32,6 +32,7 @@
 
 @property NSString* ReportType;
 @property NSString* name;
+@property NSString* strPath;
 @property NSURL* Source;
 @property UIProgressView* progBar;
 

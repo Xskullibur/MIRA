@@ -32,10 +32,10 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="camera" translatesAutoresizingMaskIntoConstraints="NO" id="GRu-zg-xWv">
-                                                    <rect key="frame" x="0.0" y="0.0" width="343" height="178.66666666666666"/>
+                                                    <rect key="frame" x="0.0" y="0.0" width="343" height="179.33333333333334"/>
                                                 </imageView>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Photo" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="e4O-uN-E0n">
-                                                    <rect key="frame" x="0.0" y="0.0" width="343" height="179.33333333333334"/>
+                                                    <rect key="frame" x="0.0" y="0.0" width="343" height="178.66666666666666"/>
                                                     <color key="backgroundColor" white="0.39607747399166665" alpha="0.60273972602739723" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                     <fontDescription key="fontDescription" name="TrebuchetMS-Bold" family="Trebuchet MS" pointSize="34"/>
                                                     <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -65,10 +65,10 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="video" translatesAutoresizingMaskIntoConstraints="NO" id="73o-kb-oOy">
-                                                    <rect key="frame" x="0.0" y="-1" width="343" height="179.33333333333334"/>
+                                                    <rect key="frame" x="0.0" y="-1" width="343" height="178.66666666666666"/>
                                                 </imageView>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Video" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1RW-o5-rc5">
-                                                    <rect key="frame" x="0.0" y="0.0" width="343" height="178.66666666666666"/>
+                                                    <rect key="frame" x="0.0" y="0.0" width="343" height="179.33333333333334"/>
                                                     <color key="backgroundColor" white="0.39607747399166665" alpha="0.60273972602739723" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                     <fontDescription key="fontDescription" name="TrebuchetMS-Bold" family="Trebuchet MS" pointSize="34"/>
                                                     <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>

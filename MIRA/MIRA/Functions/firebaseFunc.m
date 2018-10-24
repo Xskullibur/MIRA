@@ -56,7 +56,18 @@
     return upload;
 }
 
-+ (void)fireDatabaseSetup{
++ (FIRDatabaseReference*)fireDatabaseSetupWithReportName:(NSString *)reportName andCategoryType:(NSString *)categoryType andDesc:(NSString *)desc andSender:(NSString *)sender andPath:(NSString *)path{
+    
+    FIRDatabaseReference* dbRef = [[FIRDatabase database] reference];
+    
+    dbRef = [dbRef child:@"Reports"].childByAutoId;
+    [[dbRef child:@"Report Name"] setValue:reportName];
+    [[dbRef child:@"Category Type"] setValue:categoryType];
+    [[dbRef child:@"Description"] setValue:desc];
+    [[dbRef child:@"Sender"] setValue:sender];
+    [[dbRef child:@"Storage Path"] setValue:path];
+
+    return dbRef;
     
 }
 

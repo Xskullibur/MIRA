@@ -13,10 +13,14 @@
 
 @interface firebaseFunc : NSObject
 
-@property (strong, nonatomic) FIRDatabaseReference *dbRef;
-
 + (FIRStorageUploadTask*)fireStorageSetupWithFolderName :(NSString*)FolderName
                              ReportType:(NSString*)ReportType
                                  Source:(NSURL*)Source;
+
++ (FIRDatabaseReference*) fireDatabaseSetupWithReportName: (NSString*)reportName
+                         andCategoryType: (NSString*)categoryType
+                                 andDesc: (NSString*)desc
+                               andSender: (NSString*)sender
+                                 andPath: (NSString*)path;
 
 @end

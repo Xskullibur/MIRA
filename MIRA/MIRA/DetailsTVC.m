@@ -262,10 +262,10 @@
     else{
         //Correct Format
         if (!_anonymousSwitch.isOn) {
-            _name = [NSString stringWithFormat:@" - (%@, %@)", _nricTxt.text, _nameTxt.text];
+            _name = [NSString stringWithFormat:@"%@, %@", _nricTxt.text, _nameTxt.text];
         }
         else{
-             _name = @" - (Anonymous)";
+             _name = @"Anonymous";
         }
         
         //-----     Check Report Source     -----//
@@ -286,9 +286,33 @@
             NSDateFormatter *dateFormat = [[NSDateFormatter alloc] init];
             [dateFormat setDateStyle:NSDateFormatterMediumStyle];
             [dateFormat setTimeStyle:NSDateFormatterShortStyle];
-            NSString *folderName = [NSString stringWithFormat:@"%@/%@%@",categoryFolder , [dateFormat stringFromDate:[NSDate date]], _name];
+            NSString *folderName = [NSString stringWithFormat:@"%@/%@%@%@%@",categoryFolder , [dateFormat stringFromDate:[NSDate date]], @" - (", _name, @")"];
             
-            FIRStorageUploadTask* upload = [firebaseFunc fireStorageSetupWithFolderName:folderName ReportType:_ReportType Source:_Source];
+            //-----     FIRESTORE REFERENCE      -----//
+            //Storage Reference
+            FIRStorageReference *folderRef = [[[FIRStorage storage] reference] child: folderName];
+            FIRStorageMetadata *metadata = [[FIRStorageMetadata alloc]init];
+            
+            //Check if Image
+            if ([_ReportType isEqualToString:@"Photo"]) {
+                //Declare File Name
+                metadata.contentType = @"image/jpeg";
+            }
+            
+            //Upload File
+            FIRStorageUploadTask *upload = [folderRef putFile:_Source metadata:metadata completion:^(FIRStorageMetadata *metadata, NSError *error){
+                //Download URL
+                [folderRef downloadURLWithCompletion:^(NSURL * _Nullable URL, NSError * _Nullable error){
+                    if (error != nil) {
+                        NSLog(@"%@", error);
+                    }
+                    else{
+                        self->_strPath = URL.absoluteString;
+                        FIRDatabaseReference* postRef = [firebaseFunc fireDatabaseSetupWithReportName:folderName andCategoryType:self->_ReportType andDesc:self->_descTxt.text andSender:self->_name andPath:self->_strPath];
+                    }
+                    
+                }];
+            }];
             
             //-----     Upload Progress         -----//
             //Progress Bar
@@ -317,8 +341,12 @@
                 }
                 
             }];
-            //Upload Successful
+            
+            //-----     Firebase Observers      -----//
+            //Check if completed
             [upload observeStatus:FIRStorageTaskStatusSuccess handler:^(FIRStorageTaskSnapshot *snapshot) {
+                
+                [upload removeAllObservers];
                 
                 UIAlertController* alert = [UIAlertController alertControllerWithTitle:@"Upload Successful" message:@"Thank You, Your Report Will Be Reviewed and Actions Will Be Taken If Necessary" preferredStyle:UIAlertControllerStyleAlert];
                 
@@ -329,11 +357,10 @@
                     [self presentViewController:vc animated:YES completion:nil];
                     
                 }];
-                
                 [alert addAction: okButton];
                 [self presentViewController:alert animated:YES completion:nil];
-                
             }];
+            
         }
     }
 }
