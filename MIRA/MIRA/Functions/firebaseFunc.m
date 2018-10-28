@@ -56,19 +56,19 @@
     return upload;
 }
 
-+ (FIRDatabaseReference*)fireDatabaseSetupWithReportName:(NSString *)reportName andCategoryType:(NSString *)categoryType andDesc:(NSString *)desc andSender:(NSString *)sender andPath:(NSString *)path{
-    
++ (void)fireDatabaseSetupWithReportName:(NSString *)reportName andCategoryType:(NSString *)categoryType andDesc:(NSString *)desc andSender:(NSString *)sender andPath:(NSString *)path andReportType:(NSString *)reportType{
     FIRDatabaseReference* dbRef = [[FIRDatabase database] reference];
     
-    dbRef = [dbRef child:@"Reports"].childByAutoId;
-    [[dbRef child:@"Report Name"] setValue:reportName];
-    [[dbRef child:@"Category Type"] setValue:categoryType];
-    [[dbRef child:@"Description"] setValue:desc];
-    [[dbRef child:@"Sender"] setValue:sender];
-    [[dbRef child:@"Storage Path"] setValue:path];
+    NSDictionary* newReport = @{
+                                @"Report Name" : reportName,
+                                @"Description" : desc,
+                                @"Category Type" : categoryType,
+                                @"Sender" : sender,
+                                @"Storage Path" : path,
+                                @"Report Type" : reportType
+                                };
 
-    return dbRef;
-    
+    [[dbRef child:@"Reports"].childByAutoId setValue:newReport];
 }
 
 @end

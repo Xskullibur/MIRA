@@ -17,10 +17,11 @@
                              ReportType:(NSString*)ReportType
                                  Source:(NSURL*)Source;
 
-+ (FIRDatabaseReference*) fireDatabaseSetupWithReportName: (NSString*)reportName
++ (void) fireDatabaseSetupWithReportName: (NSString*)reportName
                          andCategoryType: (NSString*)categoryType
                                  andDesc: (NSString*)desc
                                andSender: (NSString*)sender
-                                 andPath: (NSString*)path;
+                                 andPath: (NSString*)path
+                           andReportType: (NSString*)reportType;
 
 @end

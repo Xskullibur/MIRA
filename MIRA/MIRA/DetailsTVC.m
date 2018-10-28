@@ -56,25 +56,25 @@
     //Tap Gesture
     UITapGestureRecognizer *TGR = [[UITapGestureRecognizer alloc]initWithTarget:self action:@selector(dismissKeyboard)];
     [self.tableView addGestureRecognizer:TGR];
-    
+
     //Swipe Up Gesture
     UISwipeGestureRecognizer *SGRup = [[UISwipeGestureRecognizer alloc] initWithTarget:self action:@selector(dismissKeyboard)];
     SGRup.cancelsTouchesInView = NO;
     SGRup.direction = UISwipeGestureRecognizerDirectionUp;
     [self.tableView addGestureRecognizer:SGRup];
-    
+
     //Down
     UISwipeGestureRecognizer *SGRdown = [[UISwipeGestureRecognizer alloc] initWithTarget:self action:@selector(dismissKeyboard)];
     SGRdown.cancelsTouchesInView = NO;
     SGRdown.direction = UISwipeGestureRecognizerDirectionDown;
     [self.tableView addGestureRecognizer:SGRdown];
-    
+
     //Left
     UISwipeGestureRecognizer *SGRleft = [[UISwipeGestureRecognizer alloc] initWithTarget:self action:@selector(dismissKeyboard)];
     SGRleft.cancelsTouchesInView = NO;
     SGRleft.direction = UISwipeGestureRecognizerDirectionLeft;
     [self.tableView addGestureRecognizer:SGRleft];
-    
+
     //Right
     UISwipeGestureRecognizer *SGRright = [[UISwipeGestureRecognizer alloc] initWithTarget:self action:@selector(dismissKeyboard)];
     SGRright.cancelsTouchesInView = NO;
@@ -216,7 +216,6 @@
 //User Clicks Submit
 - (IBAction)submitClicked:(id)sender {
     
-    NSString* category;
     NSString* categoryFolder;
     
     //-----     Check For Report Category       -----//
@@ -245,8 +244,6 @@
         default:
             break;
     }
-    category = categoryFolder;
-    categoryFolder = [categoryFolder stringByAppendingString:@"/"];
     
     //-----     Check if Anonymous Chosen       -----//
     
@@ -262,7 +259,7 @@
     else{
         //Correct Format
         if (!_anonymousSwitch.isOn) {
-            _name = [NSString stringWithFormat:@"%@, %@", _nricTxt.text, _nameTxt.text];
+            _name = [NSString stringWithFormat:@"%@_%@", _nricTxt.text, _nameTxt.text];
         }
         else{
              _name = @"Anonymous";
@@ -286,11 +283,11 @@
             NSDateFormatter *dateFormat = [[NSDateFormatter alloc] init];
             [dateFormat setDateStyle:NSDateFormatterMediumStyle];
             [dateFormat setTimeStyle:NSDateFormatterShortStyle];
-            NSString *folderName = [NSString stringWithFormat:@"%@/%@%@%@%@",categoryFolder , [dateFormat stringFromDate:[NSDate date]], @" - (", _name, @")"];
+            NSString* reportName = [NSString stringWithFormat:@"%@ - %@", [dateFormat stringFromDate:[NSDate date]], _name];
             
             //-----     FIRESTORE REFERENCE      -----//
             //Storage Reference
-            FIRStorageReference *folderRef = [[[FIRStorage storage] reference] child: folderName];
+            FIRStorageReference *folderRef = [[[FIRStorage storage] reference] child: [NSString stringWithFormat:@"%@/%@", categoryFolder, reportName]];
             FIRStorageMetadata *metadata = [[FIRStorageMetadata alloc]init];
             
             //Check if Image
@@ -308,7 +305,8 @@
                     }
                     else{
                         self->_strPath = URL.absoluteString;
-                        FIRDatabaseReference* postRef = [firebaseFunc fireDatabaseSetupWithReportName:folderName andCategoryType:self->_ReportType andDesc:self->_descTxt.text andSender:self->_name andPath:self->_strPath];
+                        [firebaseFunc fireDatabaseSetupWithReportName:reportName andCategoryType:categoryFolder andDesc:self->_descTxt.text andSender:self->_name andPath:self->_strPath andReportType: self->_ReportType];
+                        [upload removeAllObservers];
                     }
                     
                 }];
@@ -345,8 +343,6 @@
             //-----     Firebase Observers      -----//
             //Check if completed
             [upload observeStatus:FIRStorageTaskStatusSuccess handler:^(FIRStorageTaskSnapshot *snapshot) {
-                
-                [upload removeAllObservers];
                 
                 UIAlertController* alert = [UIAlertController alertControllerWithTitle:@"Upload Successful" message:@"Thank You, Your Report Will Be Reviewed and Actions Will Be Taken If Necessary" preferredStyle:UIAlertControllerStyleAlert];
                 
